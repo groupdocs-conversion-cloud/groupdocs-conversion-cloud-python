@@ -32,7 +32,7 @@ import warnings
 
 import six
 
-from groupdocs_conversion_cloud import Configuration, ConversionApi, ApiException, GetSupportedConversionTypesRequest
+from groupdocs_conversion_cloud import Configuration, InfoApi, ApiException, GetSupportedConversionTypesRequest
 from test.test_settings import TestSettings
 
 class TestAuthApi(unittest.TestCase):
@@ -46,7 +46,7 @@ class TestAuthApi(unittest.TestCase):
         configuration = Configuration(app_sid, app_key)
         configuration.api_base_url = TestSettings.API_BASE_URL
         
-        return ConversionApi.from_config(configuration)
+        return InfoApi.from_config(configuration)
 
     def test_auth_error_when_app_sid_not_found(self):
         """Test case to check handling of authentication errors"""
@@ -54,10 +54,10 @@ class TestAuthApi(unittest.TestCase):
         app_sid = "test"
         app_key = "test"
         
-        conversion_api = self.init_api(app_sid, app_key)
+        info_api = self.init_api(app_sid, app_key)
         request = GetSupportedConversionTypesRequest()
         with self.assertRaises(ApiException) as context:
-            conversion_api.get_supported_conversion_types(request)
+            info_api.get_supported_conversion_types(request)
 
         self.assertEqual("invalid_client", context.exception.message)
     
@@ -67,10 +67,10 @@ class TestAuthApi(unittest.TestCase):
         app_sid = TestSettings.APP_SID
         app_key = "test"
         
-        conversion_api = self.init_api(app_sid, app_key)
+        info_api = self.init_api(app_sid, app_key)
         request = GetSupportedConversionTypesRequest()
         with self.assertRaises(ApiException) as context:
-            conversion_api.get_supported_conversion_types(request)
+            info_api.get_supported_conversion_types(request)
 
         self.assertEqual("invalid_client", context.exception.message)
 

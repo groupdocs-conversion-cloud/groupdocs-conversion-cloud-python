@@ -37,7 +37,7 @@ from groupdocs_conversion_cloud.api_client import ApiClient
 from groupdocs_conversion_cloud.api_exception import ApiException
 from groupdocs_conversion_cloud.configuration import Configuration
 
-class ConversionApi(object):
+class InfoApi(object):
     """
     GroupDocs.Conversion Cloud API
 
@@ -55,7 +55,7 @@ class ConversionApi(object):
         """
         Closes thread pool. This method should be called when 
         methods are executed asynchronously (is_async=True is passed as parameter)
-        and this instance of ConversionApi is not going to be used any more.
+        and this instance of InfoApi is not going to be used any more.
         """
         if self.api_client is not None:
             if(self.api_client.pool is not None):
@@ -66,52 +66,53 @@ class ConversionApi(object):
     @classmethod
     def from_keys(cls, app_sid, app_key):
         """
-        Initializes new instance of ConversionApi with API keys
+        Initializes new instance of InfoApi with API keys
 
         :param app_sid Application identifier (App SID)
         :param app_key Application private key (App Key)
         """
         configuration = Configuration(app_sid, app_key)
-        return ConversionApi(configuration)
+        return InfoApi(configuration)
 
     @classmethod
     def from_config(cls, configuration):
         """
-        Initializes new instance of ConversionApi with configuration options
+        Initializes new instance of InfoApi with configuration options
 
         :param configuration API configuration
         """
-        return ConversionApi(configuration)
-    
-    def convert_document(self, request,**kwargs):  # noqa: E501
-        """Converts specified input document to format specified in the convertSettings with specified options  # noqa: E501
+        return InfoApi(configuration)
+
+    def get_document_metadata(self, request,**kwargs):  # noqa: E501
+        """Returns metadata for provided document  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
 
         :param is_async bool
-        :param ConvertSettings convert_settings: (required)
-        :return: list[StoredConvertedResult]
+        :param str file_path: Absolute path to a document in the storage
+        :param str storage_name: StorageName which contains the document
+        :return: DocumentMetadata
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
 
         if kwargs.get('is_async'):
-            return self._convert_document_with_http_info(request, **kwargs)  # noqa: E501
+            return self._get_document_metadata_with_http_info(request, **kwargs)  # noqa: E501
         
-        (data) = self._convert_document_with_http_info(request, **kwargs)  # noqa: E501
+        (data) = self._get_document_metadata_with_http_info(request, **kwargs)  # noqa: E501
         return data
 
-    def _convert_document_with_http_info(self, request, **kwargs):  # noqa: E501
-        """Converts specified input document to format specified in the convertSettings with specified options  # noqa: E501
+    def _get_document_metadata_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Returns metadata for provided document  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
 
         :param is_async bool
-        :param ConvertDocumentRequest request object with parameters
-        :return: list[StoredConvertedResult]
+        :param GetDocumentMetadataRequest request object with parameters
+        :return: DocumentMetadata
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -124,19 +125,26 @@ class ConversionApi(object):
             if key not in params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method convert_document" % key
+                    " to method get_document_metadata" % key
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'convert_settings' is set
-        if request.convert_settings is None:
-            raise ValueError("Missing the required parameter `convert_settings` when calling `convert_document`")  # noqa: E501
 
         collection_formats = {}
-        path = '/conversion'
+        path = '/conversion/info'
         path_params = {}
 
         query_params = []
+        if self.__downcase_first_letter('FilePath') in path:
+            path = path.replace('{' + self.__downcase_first_letter('FilePath' + '}'), request.file_path if request.file_path is not None else '')
+        else:
+            if request.file_path is not None:
+                query_params.append((self.__downcase_first_letter('FilePath'), request.file_path))  # noqa: E501
+        if self.__downcase_first_letter('StorageName') in path:
+            path = path.replace('{' + self.__downcase_first_letter('StorageName' + '}'), request.storage_name if request.storage_name is not None else '')
+        else:
+            if request.storage_name is not None:
+                query_params.append((self.__downcase_first_letter('StorageName'), request.storage_name))  # noqa: E501
 
         header_params = {}
 
@@ -144,8 +152,6 @@ class ConversionApi(object):
         local_var_files = []
 
         body_params = None
-        if request.convert_settings is not None:
-            body_params = request.convert_settings
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -156,105 +162,14 @@ class ConversionApi(object):
 
         call_kwargs = {
             'resource_path':path, 
-            'method':'POST',
+            'method':'GET',
             'path_params':path_params,
             'query_params':query_params,
             'header_params':header_params,
             'body':body_params,
             'post_params':form_params,
             'files':local_var_files,
-            'response_type':'list[StoredConvertedResult]',  # noqa: E501
-            'auth_settings':self.auth.get_auth_settings(),
-            'is_async':params.get('is_async'),
-            '_return_http_data_only':params.get('_return_http_data_only'),
-            '_preload_content':params.get('_preload_content', True),
-            '_request_timeout':params.get('_request_timeout'),
-            'collection_formats':collection_formats
-        }
-
-        return self.api_client.call_api(**call_kwargs)  # noqa: E501
-
-    def convert_document_download(self, request,**kwargs):  # noqa: E501
-        """Converts specified input document to format specified in the convertSettings with specified options  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-
-        :param is_async bool
-        :param ConvertSettings convert_settings: (required)
-        :return: file
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-
-        if kwargs.get('is_async'):
-            return self._convert_document_download_with_http_info(request, **kwargs)  # noqa: E501
-        
-        (data) = self._convert_document_download_with_http_info(request, **kwargs)  # noqa: E501
-        return data
-
-    def _convert_document_download_with_http_info(self, request, **kwargs):  # noqa: E501
-        """Converts specified input document to format specified in the convertSettings with specified options  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-
-        :param is_async bool
-        :param ConvertDocumentRequest request object with parameters
-        :return: list[StoredConvertedResult]
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        params = locals()
-        params['is_async'] = ''
-        params['_return_http_data_only'] = False
-        params['_preload_content'] = True
-        params['_request_timeout'] = ''
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method convert_document" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'convert_settings' is set
-        if request.convert_settings is None:
-            raise ValueError("Missing the required parameter `convert_settings` when calling `convert_document`")  # noqa: E501
-
-        collection_formats = {}
-        path = '/conversion'
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = []
-
-        body_params = None
-        if request.convert_settings is not None:
-            body_params = request.convert_settings
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        call_kwargs = {
-            'resource_path':path, 
-            'method':'POST',
-            'path_params':path_params,
-            'query_params':query_params,
-            'header_params':header_params,
-            'body':body_params,
-            'post_params':form_params,
-            'files':local_var_files,
-            'response_type':'file',  # noqa: E501
+            'response_type':'DocumentMetadata',  # noqa: E501
             'auth_settings':self.auth.get_auth_settings(),
             'is_async':params.get('is_async'),
             '_return_http_data_only':params.get('_return_http_data_only'),
@@ -377,7 +292,7 @@ class ConversionApi(object):
 # coding: utf-8
 
 # --------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="convert_document_request.py">
+# <copyright company="Aspose Pty Ltd" file="get_document_metadata_request.py">
 #   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -401,15 +316,17 @@ class ConversionApi(object):
 # </summary>
 # --------------------------------------------------------------------------------
 
-class ConvertDocumentRequest(object):
+class GetDocumentMetadataRequest(object):
     """
-    Request model for convert_document operation.
-    :param convert_settings 
+    Request model for get_document_metadata operation.
+    :param file_path Absolute path to a document in the storage
+    :param storage_name StorageName which contains the document
     """
 
-    def __init__(self, convert_settings):
-        """Initializes new instance of ConvertDocumentRequest."""  # noqa: E501
-        self.convert_settings = convert_settings
+    def __init__(self, file_path=None, storage_name=None):
+        """Initializes new instance of GetDocumentMetadataRequest."""  # noqa: E501
+        self.file_path = file_path
+        self.storage_name = storage_name
 # coding: utf-8
 
 # --------------------------------------------------------------------------------

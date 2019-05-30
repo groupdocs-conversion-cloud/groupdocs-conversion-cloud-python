@@ -274,7 +274,7 @@ class FolderApi(object):
 
         call_kwargs = {
             'resource_path':path, 
-            'method':'POST',
+            'method':'PUT',
             'path_params':path_params,
             'query_params':query_params,
             'header_params':header_params,

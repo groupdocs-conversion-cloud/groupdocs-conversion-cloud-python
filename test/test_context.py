@@ -36,7 +36,7 @@ import warnings
 import threading
 import six
 
-from groupdocs_conversion_cloud import Configuration, ConversionApi, StorageApi, FileApi, FolderApi
+from groupdocs_conversion_cloud import Configuration, ConvertApi, InfoApi, StorageApi, FileApi, FolderApi
 from groupdocs_conversion_cloud import ObjectExistsRequest, UploadFileRequest, DeleteFolderRequest
 from test.test_settings import TestSettings
 from test.test_file import TestFile
@@ -44,7 +44,8 @@ from test.test_file import TestFile
 class TestContext(unittest.TestCase):
     OUT_FOLDER="converted"
 
-    conversion_api = None
+    convert_api = None
+    info_api = None
     storage_api = None
     file_api = None
     folder_api = None
@@ -83,7 +84,8 @@ class TestContext(unittest.TestCase):
         return temp_file.name
 
     def _close_api_thread_pool(self):
-        self.conversion_api.close()
+        self.convert_api.close()
+        self.info_api.close()
         self.storage_api.close()
         self.file_api.close()
         self.folder_api.close()
@@ -110,11 +112,12 @@ class TestContext(unittest.TestCase):
         TestContext._test_files_uploaded = True
 
     def _init_api(self):
-        if self.conversion_api is None:
+        if self.convert_api is None:
             configuration = Configuration(TestSettings.APP_SID, TestSettings.APP_KEY)
             configuration.api_base_url = TestSettings.API_BASE_URL
             #configuration.debug = True
-            self.conversion_api = ConversionApi.from_config(configuration)
+            self.convert_api = ConvertApi.from_config(configuration)
+            self.info_api = InfoApi.from_config(configuration)
             self.storage_api = StorageApi.from_config(configuration)
             self.file_api = FileApi.from_config(configuration)
             self.folder_api = FolderApi.from_config(configuration)

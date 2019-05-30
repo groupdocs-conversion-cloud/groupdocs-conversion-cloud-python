@@ -5,7 +5,8 @@
 from __future__ import absolute_import
 
 # import apis
-from groupdocs_conversion_cloud.apis.conversion_api import ConversionApi
+from groupdocs_conversion_cloud.apis.convert_api import ConvertApi
+from groupdocs_conversion_cloud.apis.info_api import InfoApi
 from groupdocs_conversion_cloud.apis.file_api import FileApi
 from groupdocs_conversion_cloud.apis.folder_api import FolderApi
 from groupdocs_conversion_cloud.apis.storage_api import StorageApi
@@ -14,7 +15,8 @@ from groupdocs_conversion_cloud.apis.storage_api import StorageApi
 from groupdocs_conversion_cloud.apis.file_api import CopyFileRequest, DeleteFileRequest, DownloadFileRequest, MoveFileRequest, UploadFileRequest
 from groupdocs_conversion_cloud.apis.storage_api import GetDiscUsageRequest, GetFileVersionsRequest, ObjectExistsRequest, StorageExistsRequest
 from groupdocs_conversion_cloud.apis.folder_api import CopyFolderRequest, CreateFolderRequest, DeleteFolderRequest, GetFilesListRequest, MoveFolderRequest
-from groupdocs_conversion_cloud.apis.conversion_api import ConvertDocumentRequest, GetSupportedConversionTypesRequest
+from groupdocs_conversion_cloud.apis.convert_api import ConvertDocumentRequest
+from groupdocs_conversion_cloud.apis.info_api import GetSupportedConversionTypesRequest, GetDocumentMetadataRequest
 
 # import related types
 from groupdocs_conversion_cloud.auth import Auth

@@ -7,6 +7,7 @@ from __future__ import absolute_import
 from groupdocs_conversion_cloud.models.convert_options import ConvertOptions
 from groupdocs_conversion_cloud.models.convert_settings import ConvertSettings
 from groupdocs_conversion_cloud.models.disc_usage import DiscUsage
+from groupdocs_conversion_cloud.models.document_metadata import DocumentMetadata
 from groupdocs_conversion_cloud.models.error import Error
 from groupdocs_conversion_cloud.models.error_details import ErrorDetails
 from groupdocs_conversion_cloud.models.file_versions import FileVersions

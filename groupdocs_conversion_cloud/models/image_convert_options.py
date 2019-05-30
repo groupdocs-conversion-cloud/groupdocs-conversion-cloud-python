@@ -52,7 +52,11 @@ class ImageConvertOptions(ConvertOptions):
         'grayscale': 'bool',
         'rotate_angle': 'int',
         'use_pdf': 'bool',
-        'watermark_options': 'WatermarkOptions'
+        'watermark_options': 'WatermarkOptions',
+        'brightness': 'int',
+        'contrast': 'int',
+        'gamma': 'float',
+        'flip_mode': 'str'
     }
 
     attribute_map = {
@@ -63,10 +67,14 @@ class ImageConvertOptions(ConvertOptions):
         'grayscale': 'Grayscale',
         'rotate_angle': 'RotateAngle',
         'use_pdf': 'UsePdf',
-        'watermark_options': 'WatermarkOptions'
+        'watermark_options': 'WatermarkOptions',
+        'brightness': 'Brightness',
+        'contrast': 'Contrast',
+        'gamma': 'Gamma',
+        'flip_mode': 'FlipMode'
     }
 
-    def __init__(self, width=None, height=None, horizontal_resolution=None, vertical_resolution=None, grayscale=None, rotate_angle=None, use_pdf=None, watermark_options=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, horizontal_resolution=None, vertical_resolution=None, grayscale=None, rotate_angle=None, use_pdf=None, watermark_options=None, brightness=None, contrast=None, gamma=None, flip_mode=None, **kwargs):  # noqa: E501
         """Initializes new instance of ImageConvertOptions"""  # noqa: E501
 
         self._width = None
@@ -77,6 +85,10 @@ class ImageConvertOptions(ConvertOptions):
         self._rotate_angle = None
         self._use_pdf = None
         self._watermark_options = None
+        self._brightness = None
+        self._contrast = None
+        self._gamma = None
+        self._flip_mode = None
 
         if width is not None:
             self.width = width
@@ -94,6 +106,14 @@ class ImageConvertOptions(ConvertOptions):
             self.use_pdf = use_pdf
         if watermark_options is not None:
             self.watermark_options = watermark_options
+        if brightness is not None:
+            self.brightness = brightness
+        if contrast is not None:
+            self.contrast = contrast
+        if gamma is not None:
+            self.gamma = gamma
+        if flip_mode is not None:
+            self.flip_mode = flip_mode
 
         base = super(ImageConvertOptions, self)
         base.__init__(**kwargs)
@@ -306,6 +326,118 @@ class ImageConvertOptions(ConvertOptions):
         :type: WatermarkOptions
         """
         self._watermark_options = watermark_options
+    
+    @property
+    def brightness(self):
+        """
+        Gets the brightness.  # noqa: E501
+
+        Adjust image brightness  # noqa: E501
+
+        :return: The brightness.  # noqa: E501
+        :rtype: int
+        """
+        return self._brightness
+
+    @brightness.setter
+    def brightness(self, brightness):
+        """
+        Sets the brightness.
+
+        Adjust image brightness  # noqa: E501
+
+        :param brightness: The brightness.  # noqa: E501
+        :type: int
+        """
+        if brightness is None:
+            raise ValueError("Invalid value for `brightness`, must not be `None`")  # noqa: E501
+        self._brightness = brightness
+    
+    @property
+    def contrast(self):
+        """
+        Gets the contrast.  # noqa: E501
+
+        Adjust image contrast  # noqa: E501
+
+        :return: The contrast.  # noqa: E501
+        :rtype: int
+        """
+        return self._contrast
+
+    @contrast.setter
+    def contrast(self, contrast):
+        """
+        Sets the contrast.
+
+        Adjust image contrast  # noqa: E501
+
+        :param contrast: The contrast.  # noqa: E501
+        :type: int
+        """
+        if contrast is None:
+            raise ValueError("Invalid value for `contrast`, must not be `None`")  # noqa: E501
+        self._contrast = contrast
+    
+    @property
+    def gamma(self):
+        """
+        Gets the gamma.  # noqa: E501
+
+        Adjust image gamma  # noqa: E501
+
+        :return: The gamma.  # noqa: E501
+        :rtype: float
+        """
+        return self._gamma
+
+    @gamma.setter
+    def gamma(self, gamma):
+        """
+        Sets the gamma.
+
+        Adjust image gamma  # noqa: E501
+
+        :param gamma: The gamma.  # noqa: E501
+        :type: float
+        """
+        if gamma is None:
+            raise ValueError("Invalid value for `gamma`, must not be `None`")  # noqa: E501
+        self._gamma = gamma
+    
+    @property
+    def flip_mode(self):
+        """
+        Gets the flip_mode.  # noqa: E501
+
+        Image flip mode  # noqa: E501
+
+        :return: The flip_mode.  # noqa: E501
+        :rtype: str
+        """
+        return self._flip_mode
+
+    @flip_mode.setter
+    def flip_mode(self, flip_mode):
+        """
+        Sets the flip_mode.
+
+        Image flip mode  # noqa: E501
+
+        :param flip_mode: The flip_mode.  # noqa: E501
+        :type: str
+        """
+        if flip_mode is None:
+            raise ValueError("Invalid value for `flip_mode`, must not be `None`")  # noqa: E501
+        allowed_values = ["None", "FlipX", "FlipY", "FlipXY"]  # noqa: E501
+        if not flip_mode.isdigit():	
+            if flip_mode not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `flip_mode` ({0}), must be one of {1}"  # noqa: E501
+                    .format(flip_mode, allowed_values))
+            self._flip_mode = flip_mode
+        else:
+            self._flip_mode = allowed_values[int(flip_mode) if six.PY3 else long(flip_mode)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -28,42 +28,37 @@
 from __future__ import absolute_import
 
 import unittest
-import os
-
 from groupdocs_conversion_cloud import *
 from test.test_context import TestContext
 from test.test_file import TestFile
 
-class TestConversionConvertApi(TestContext):
-    """ConversionApi unit tests"""
+class TestInfoApi(TestContext):
+    """InfoApi unit tests"""
 
-    def test_convert_document(self):
+    def test_get_supported_conversion_types(self):
         """
-        Test case for convert_document
-
-        """
-        test_file = TestFile.one_page_docx()
-        settings = ConvertSettings()
-        settings.file_path = test_file.folder + test_file.file_name
-        settings.format = "pdf"
-        settings.output_path = self.OUT_FOLDER
-        request = ConvertDocumentRequest(settings)
-        data = self.conversion_api.convert_document(request)
-        self.assertTrue(len(data) > 0)
-        self.assertTrue(data[0].size > 0)
-
-    def test_convert_document_download(self):
-        """
-        Test case for convert_document with file result
+        Test case for supported_conversion_types
 
         """
-        test_file = TestFile.one_page_docx()
-        settings = ConvertSettings()
-        settings.file_path = test_file.folder + test_file.file_name
-        settings.format = "pdf"
-        request = ConvertDocumentRequest(settings)
-        data = self.conversion_api.convert_document_download(request)
-        self.assertGreater(os.path.getsize(data), 0)
+        request = GetSupportedConversionTypesRequest()
+        data = self.info_api.get_supported_conversion_types(request)
+
+        for entry in data:
+            self.assertFalse(entry.source_format == "")
+            self.assertTrue(len(entry.target_formats) > 0)
+
+    def test_get_document_metadata(self):
+        """
+        Test case for get_document_metadata
+
+        """
+
+        test_file = TestFile.four_pages_docx()
+        file_path = test_file.folder + test_file.file_name
+        request = GetDocumentMetadataRequest(file_path)
+        data = self.info_api.get_document_metadata(request)
+
+        self.assertTrue(data.page_count == 4)
 
 if __name__ == '__main__':
     unittest.main()

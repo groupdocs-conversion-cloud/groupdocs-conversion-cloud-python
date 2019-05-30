@@ -28,23 +28,42 @@
 from __future__ import absolute_import
 
 import unittest
+import os
+
 from groupdocs_conversion_cloud import *
 from test.test_context import TestContext
+from test.test_file import TestFile
 
-class TestConversionFormatsApi(TestContext):
-    """ConversionApi unit tests"""
+class TestConvertApi(TestContext):
+    """ConvertApi unit tests"""
 
-    def test_get_supported_conversion_types(self):
+    def test_convert_document(self):
         """
-        Test case for supported_conversion_types
+        Test case for convert_document
 
         """
-        request = GetSupportedConversionTypesRequest()
-        data = self.conversion_api.get_supported_conversion_types(request)
+        test_file = TestFile.one_page_docx()
+        settings = ConvertSettings()
+        settings.file_path = test_file.folder + test_file.file_name
+        settings.format = "pdf"
+        settings.output_path = self.OUT_FOLDER
+        request = ConvertDocumentRequest(settings)
+        data = self.convert_api.convert_document(request)
+        self.assertTrue(len(data) > 0)
+        self.assertTrue(data[0].size > 0)
 
-        for entry in data:
-            self.assertFalse(entry.source_format == "")
-            self.assertTrue(len(entry.target_formats) > 0)
+    def test_convert_document_download(self):
+        """
+        Test case for convert_document with file result
+
+        """
+        test_file = TestFile.one_page_docx()
+        settings = ConvertSettings()
+        settings.file_path = test_file.folder + test_file.file_name
+        settings.format = "pdf"
+        request = ConvertDocumentRequest(settings)
+        data = self.convert_api.convert_document_download(request)
+        self.assertGreater(os.path.getsize(data), 0)
 
 if __name__ == '__main__':
     unittest.main()

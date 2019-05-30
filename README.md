@@ -31,7 +31,7 @@ app_sid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 app_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 # Create instance of the API
-api = groupdocs_conversion_cloud.ConversionApi.from_keys(app_sid, app_key)
+api = groupdocs_conversion_cloud.InfoApi.from_keys(app_sid, app_key)
 
 try:
     # Retrieve supported conversion types
