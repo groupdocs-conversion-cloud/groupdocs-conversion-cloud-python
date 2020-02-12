@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="CsvLoadOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -49,7 +49,8 @@ class CsvLoadOptions(LoadOptions):
         'is_multi_encoded': 'bool',
         'has_formula': 'bool',
         'convert_numeric_data': 'bool',
-        'convert_date_time_data': 'bool'
+        'convert_date_time_data': 'bool',
+        'encoding': 'str'
     }
 
     attribute_map = {
@@ -57,10 +58,11 @@ class CsvLoadOptions(LoadOptions):
         'is_multi_encoded': 'IsMultiEncoded',
         'has_formula': 'HasFormula',
         'convert_numeric_data': 'ConvertNumericData',
-        'convert_date_time_data': 'ConvertDateTimeData'
+        'convert_date_time_data': 'ConvertDateTimeData',
+        'encoding': 'Encoding'
     }
 
-    def __init__(self, separator=None, is_multi_encoded=None, has_formula=None, convert_numeric_data=None, convert_date_time_data=None, **kwargs):  # noqa: E501
+    def __init__(self, separator=None, is_multi_encoded=None, has_formula=None, convert_numeric_data=None, convert_date_time_data=None, encoding=None, **kwargs):  # noqa: E501
         """Initializes new instance of CsvLoadOptions"""  # noqa: E501
 
         self._separator = None
@@ -68,6 +70,7 @@ class CsvLoadOptions(LoadOptions):
         self._has_formula = None
         self._convert_numeric_data = None
         self._convert_date_time_data = None
+        self._encoding = None
 
         if separator is not None:
             self.separator = separator
@@ -79,6 +82,8 @@ class CsvLoadOptions(LoadOptions):
             self.convert_numeric_data = convert_numeric_data
         if convert_date_time_data is not None:
             self.convert_date_time_data = convert_date_time_data
+        if encoding is not None:
+            self.encoding = encoding
 
         base = super(CsvLoadOptions, self)
         base.__init__(**kwargs)
@@ -215,6 +220,30 @@ class CsvLoadOptions(LoadOptions):
         if convert_date_time_data is None:
             raise ValueError("Invalid value for `convert_date_time_data`, must not be `None`")  # noqa: E501
         self._convert_date_time_data = convert_date_time_data
+    
+    @property
+    def encoding(self):
+        """
+        Gets the encoding.  # noqa: E501
+
+        File encoding  # noqa: E501
+
+        :return: The encoding.  # noqa: E501
+        :rtype: str
+        """
+        return self._encoding
+
+    @encoding.setter
+    def encoding(self, encoding):
+        """
+        Sets the encoding.
+
+        File encoding  # noqa: E501
+
+        :param encoding: The encoding.  # noqa: E501
+        :type: str
+        """
+        self._encoding = encoding
 
     def to_dict(self):
         """Returns the model properties as a dict"""

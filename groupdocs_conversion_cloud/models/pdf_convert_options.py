@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="PdfConvertOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -68,15 +68,12 @@ class PdfConvertOptions(ConvertOptions):
         'direction': 'str',
         'display_doc_title': 'bool',
         'fit_window': 'bool',
-        'hide_menubar': 'bool',
+        'hide_menu_bar': 'bool',
         'hide_tool_bar': 'bool',
         'hide_window_ui': 'bool',
         'non_full_screen_page_mode': 'str',
         'page_layout': 'str',
         'page_mode': 'str',
-        'bookmarks_outline_level': 'int',
-        'headings_outline_levels': 'int',
-        'expanded_outline_levels': 'int',
         'rotate': 'str',
         'watermark_options': 'WatermarkOptions'
     }
@@ -105,20 +102,17 @@ class PdfConvertOptions(ConvertOptions):
         'direction': 'Direction',
         'display_doc_title': 'DisplayDocTitle',
         'fit_window': 'FitWindow',
-        'hide_menubar': 'HideMenubar',
+        'hide_menu_bar': 'HideMenuBar',
         'hide_tool_bar': 'HideToolBar',
         'hide_window_ui': 'HideWindowUI',
         'non_full_screen_page_mode': 'NonFullScreenPageMode',
         'page_layout': 'PageLayout',
         'page_mode': 'PageMode',
-        'bookmarks_outline_level': 'BookmarksOutlineLevel',
-        'headings_outline_levels': 'HeadingsOutlineLevels',
-        'expanded_outline_levels': 'ExpandedOutlineLevels',
         'rotate': 'Rotate',
         'watermark_options': 'WatermarkOptions'
     }
 
-    def __init__(self, width=None, height=None, dpi=None, password=None, margin_top=None, margin_bottom=None, margin_left=None, margin_right=None, pdf_format=None, remove_pdfa_compliance=None, zoom=None, linearize=None, link_duplicate_streams=None, remove_unused_objects=None, remove_unused_streams=None, compress_images=None, image_quality=None, unembed_fonts=None, grayscale=None, center_window=None, direction=None, display_doc_title=None, fit_window=None, hide_menubar=None, hide_tool_bar=None, hide_window_ui=None, non_full_screen_page_mode=None, page_layout=None, page_mode=None, bookmarks_outline_level=None, headings_outline_levels=None, expanded_outline_levels=None, rotate=None, watermark_options=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, dpi=None, password=None, margin_top=None, margin_bottom=None, margin_left=None, margin_right=None, pdf_format=None, remove_pdfa_compliance=None, zoom=None, linearize=None, link_duplicate_streams=None, remove_unused_objects=None, remove_unused_streams=None, compress_images=None, image_quality=None, unembed_fonts=None, grayscale=None, center_window=None, direction=None, display_doc_title=None, fit_window=None, hide_menu_bar=None, hide_tool_bar=None, hide_window_ui=None, non_full_screen_page_mode=None, page_layout=None, page_mode=None, rotate=None, watermark_options=None, **kwargs):  # noqa: E501
         """Initializes new instance of PdfConvertOptions"""  # noqa: E501
 
         self._width = None
@@ -144,15 +138,12 @@ class PdfConvertOptions(ConvertOptions):
         self._direction = None
         self._display_doc_title = None
         self._fit_window = None
-        self._hide_menubar = None
+        self._hide_menu_bar = None
         self._hide_tool_bar = None
         self._hide_window_ui = None
         self._non_full_screen_page_mode = None
         self._page_layout = None
         self._page_mode = None
-        self._bookmarks_outline_level = None
-        self._headings_outline_levels = None
-        self._expanded_outline_levels = None
         self._rotate = None
         self._watermark_options = None
 
@@ -202,8 +193,8 @@ class PdfConvertOptions(ConvertOptions):
             self.display_doc_title = display_doc_title
         if fit_window is not None:
             self.fit_window = fit_window
-        if hide_menubar is not None:
-            self.hide_menubar = hide_menubar
+        if hide_menu_bar is not None:
+            self.hide_menu_bar = hide_menu_bar
         if hide_tool_bar is not None:
             self.hide_tool_bar = hide_tool_bar
         if hide_window_ui is not None:
@@ -214,12 +205,6 @@ class PdfConvertOptions(ConvertOptions):
             self.page_layout = page_layout
         if page_mode is not None:
             self.page_mode = page_mode
-        if bookmarks_outline_level is not None:
-            self.bookmarks_outline_level = bookmarks_outline_level
-        if headings_outline_levels is not None:
-            self.headings_outline_levels = headings_outline_levels
-        if expanded_outline_levels is not None:
-            self.expanded_outline_levels = expanded_outline_levels
         if rotate is not None:
             self.rotate = rotate
         if watermark_options is not None:
@@ -844,30 +829,30 @@ class PdfConvertOptions(ConvertOptions):
         self._fit_window = fit_window
     
     @property
-    def hide_menubar(self):
+    def hide_menu_bar(self):
         """
-        Gets the hide_menubar.  # noqa: E501
+        Gets the hide_menu_bar.  # noqa: E501
 
         Specify whether menu bar should be hidden when document is active. Default: false.  # noqa: E501
 
-        :return: The hide_menubar.  # noqa: E501
+        :return: The hide_menu_bar.  # noqa: E501
         :rtype: bool
         """
-        return self._hide_menubar
+        return self._hide_menu_bar
 
-    @hide_menubar.setter
-    def hide_menubar(self, hide_menubar):
+    @hide_menu_bar.setter
+    def hide_menu_bar(self, hide_menu_bar):
         """
-        Sets the hide_menubar.
+        Sets the hide_menu_bar.
 
         Specify whether menu bar should be hidden when document is active. Default: false.  # noqa: E501
 
-        :param hide_menubar: The hide_menubar.  # noqa: E501
+        :param hide_menu_bar: The hide_menu_bar.  # noqa: E501
         :type: bool
         """
-        if hide_menubar is None:
-            raise ValueError("Invalid value for `hide_menubar`, must not be `None`")  # noqa: E501
-        self._hide_menubar = hide_menubar
+        if hide_menu_bar is None:
+            raise ValueError("Invalid value for `hide_menu_bar`, must not be `None`")  # noqa: E501
+        self._hide_menu_bar = hide_menu_bar
     
     @property
     def hide_tool_bar(self):
@@ -1022,84 +1007,6 @@ class PdfConvertOptions(ConvertOptions):
             self._page_mode = page_mode
         else:
             self._page_mode = allowed_values[int(page_mode) if six.PY3 else long(page_mode)]
-    
-    @property
-    def bookmarks_outline_level(self):
-        """
-        Gets the bookmarks_outline_level.  # noqa: E501
-
-        Specifies the default level in the document outline at which to display Word bookmarks. Default is 0. Valid range is 0 to 9.  # noqa: E501
-
-        :return: The bookmarks_outline_level.  # noqa: E501
-        :rtype: int
-        """
-        return self._bookmarks_outline_level
-
-    @bookmarks_outline_level.setter
-    def bookmarks_outline_level(self, bookmarks_outline_level):
-        """
-        Sets the bookmarks_outline_level.
-
-        Specifies the default level in the document outline at which to display Word bookmarks. Default is 0. Valid range is 0 to 9.  # noqa: E501
-
-        :param bookmarks_outline_level: The bookmarks_outline_level.  # noqa: E501
-        :type: int
-        """
-        if bookmarks_outline_level is None:
-            raise ValueError("Invalid value for `bookmarks_outline_level`, must not be `None`")  # noqa: E501
-        self._bookmarks_outline_level = bookmarks_outline_level
-    
-    @property
-    def headings_outline_levels(self):
-        """
-        Gets the headings_outline_levels.  # noqa: E501
-
-        Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline. Default is 0. Valid range is 0 to 9.  # noqa: E501
-
-        :return: The headings_outline_levels.  # noqa: E501
-        :rtype: int
-        """
-        return self._headings_outline_levels
-
-    @headings_outline_levels.setter
-    def headings_outline_levels(self, headings_outline_levels):
-        """
-        Sets the headings_outline_levels.
-
-        Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline. Default is 0. Valid range is 0 to 9.  # noqa: E501
-
-        :param headings_outline_levels: The headings_outline_levels.  # noqa: E501
-        :type: int
-        """
-        if headings_outline_levels is None:
-            raise ValueError("Invalid value for `headings_outline_levels`, must not be `None`")  # noqa: E501
-        self._headings_outline_levels = headings_outline_levels
-    
-    @property
-    def expanded_outline_levels(self):
-        """
-        Gets the expanded_outline_levels.  # noqa: E501
-
-        Specifies how many levels in the document outline to show expanded when the file is viewed. Default is 0. Valid range is 0 to 9. Note that this options will not work when saving to XPS.  # noqa: E501
-
-        :return: The expanded_outline_levels.  # noqa: E501
-        :rtype: int
-        """
-        return self._expanded_outline_levels
-
-    @expanded_outline_levels.setter
-    def expanded_outline_levels(self, expanded_outline_levels):
-        """
-        Sets the expanded_outline_levels.
-
-        Specifies how many levels in the document outline to show expanded when the file is viewed. Default is 0. Valid range is 0 to 9. Note that this options will not work when saving to XPS.  # noqa: E501
-
-        :param expanded_outline_levels: The expanded_outline_levels.  # noqa: E501
-        :type: int
-        """
-        if expanded_outline_levels is None:
-            raise ValueError("Invalid value for `expanded_outline_levels`, must not be `None`")  # noqa: E501
-        self._expanded_outline_levels = expanded_outline_levels
     
     @property
     def rotate(self):

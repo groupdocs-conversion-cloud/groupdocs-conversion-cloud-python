@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="EmailLoadOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -50,7 +50,9 @@ class EmailLoadOptions(LoadOptions):
         'display_email_address': 'bool',
         'display_to_email_address': 'bool',
         'display_cc_email_address': 'bool',
-        'display_bcc_email_address': 'bool'
+        'display_bcc_email_address': 'bool',
+        'time_zone_offset': 'str',
+        'convert_attachments': 'bool'
     }
 
     attribute_map = {
@@ -59,10 +61,12 @@ class EmailLoadOptions(LoadOptions):
         'display_email_address': 'DisplayEmailAddress',
         'display_to_email_address': 'DisplayToEmailAddress',
         'display_cc_email_address': 'DisplayCcEmailAddress',
-        'display_bcc_email_address': 'DisplayBccEmailAddress'
+        'display_bcc_email_address': 'DisplayBccEmailAddress',
+        'time_zone_offset': 'TimeZoneOffset',
+        'convert_attachments': 'ConvertAttachments'
     }
 
-    def __init__(self, display_header=None, display_from_email_address=None, display_email_address=None, display_to_email_address=None, display_cc_email_address=None, display_bcc_email_address=None, **kwargs):  # noqa: E501
+    def __init__(self, display_header=None, display_from_email_address=None, display_email_address=None, display_to_email_address=None, display_cc_email_address=None, display_bcc_email_address=None, time_zone_offset=None, convert_attachments=None, **kwargs):  # noqa: E501
         """Initializes new instance of EmailLoadOptions"""  # noqa: E501
 
         self._display_header = None
@@ -71,6 +75,8 @@ class EmailLoadOptions(LoadOptions):
         self._display_to_email_address = None
         self._display_cc_email_address = None
         self._display_bcc_email_address = None
+        self._time_zone_offset = None
+        self._convert_attachments = None
 
         if display_header is not None:
             self.display_header = display_header
@@ -84,6 +90,10 @@ class EmailLoadOptions(LoadOptions):
             self.display_cc_email_address = display_cc_email_address
         if display_bcc_email_address is not None:
             self.display_bcc_email_address = display_bcc_email_address
+        if time_zone_offset is not None:
+            self.time_zone_offset = time_zone_offset
+        if convert_attachments is not None:
+            self.convert_attachments = convert_attachments
 
         base = super(EmailLoadOptions, self)
         base.__init__(**kwargs)
@@ -246,6 +256,56 @@ class EmailLoadOptions(LoadOptions):
         if display_bcc_email_address is None:
             raise ValueError("Invalid value for `display_bcc_email_address`, must not be `None`")  # noqa: E501
         self._display_bcc_email_address = display_bcc_email_address
+    
+    @property
+    def time_zone_offset(self):
+        """
+        Gets the time_zone_offset.  # noqa: E501
+
+        Gets or sets the Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the localtime and UTC.  # noqa: E501
+
+        :return: The time_zone_offset.  # noqa: E501
+        :rtype: str
+        """
+        return self._time_zone_offset
+
+    @time_zone_offset.setter
+    def time_zone_offset(self, time_zone_offset):
+        """
+        Sets the time_zone_offset.
+
+        Gets or sets the Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the localtime and UTC.  # noqa: E501
+
+        :param time_zone_offset: The time_zone_offset.  # noqa: E501
+        :type: str
+        """
+        self._time_zone_offset = time_zone_offset
+    
+    @property
+    def convert_attachments(self):
+        """
+        Gets the convert_attachments.  # noqa: E501
+
+        Option to convert attachments in source email or not. Default: false.  # noqa: E501
+
+        :return: The convert_attachments.  # noqa: E501
+        :rtype: bool
+        """
+        return self._convert_attachments
+
+    @convert_attachments.setter
+    def convert_attachments(self, convert_attachments):
+        """
+        Sets the convert_attachments.
+
+        Option to convert attachments in source email or not. Default: false.  # noqa: E501
+
+        :param convert_attachments: The convert_attachments.  # noqa: E501
+        :type: bool
+        """
+        if convert_attachments is None:
+            raise ValueError("Invalid value for `convert_attachments`, must not be `None`")  # noqa: E501
+        self._convert_attachments = convert_attachments
 
     def to_dict(self):
         """Returns the model properties as a dict"""

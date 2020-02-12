@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,7 +37,7 @@ class TestFolderApi(TestContext):
     """FolderApi unit tests"""
 
     def test_get_list_files(self):
-        request = GetFilesListRequest("cad")
+        request = GetFilesListRequest("WordProcessing")
         data = self.folder_api.get_files_list(request)
         self.assertGreater(len(data.value), 0)
 

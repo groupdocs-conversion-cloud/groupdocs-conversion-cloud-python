@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="TxtLoadOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,21 +47,24 @@ class TxtLoadOptions(LoadOptions):
     swagger_types = {
         'detect_numbering_with_whitespaces': 'bool',
         'trailing_spaces_options': 'str',
-        'leading_spaces_options': 'str'
+        'leading_spaces_options': 'str',
+        'encoding': 'str'
     }
 
     attribute_map = {
         'detect_numbering_with_whitespaces': 'DetectNumberingWithWhitespaces',
         'trailing_spaces_options': 'TrailingSpacesOptions',
-        'leading_spaces_options': 'LeadingSpacesOptions'
+        'leading_spaces_options': 'LeadingSpacesOptions',
+        'encoding': 'Encoding'
     }
 
-    def __init__(self, detect_numbering_with_whitespaces=None, trailing_spaces_options=None, leading_spaces_options=None, **kwargs):  # noqa: E501
+    def __init__(self, detect_numbering_with_whitespaces=None, trailing_spaces_options=None, leading_spaces_options=None, encoding=None, **kwargs):  # noqa: E501
         """Initializes new instance of TxtLoadOptions"""  # noqa: E501
 
         self._detect_numbering_with_whitespaces = None
         self._trailing_spaces_options = None
         self._leading_spaces_options = None
+        self._encoding = None
 
         if detect_numbering_with_whitespaces is not None:
             self.detect_numbering_with_whitespaces = detect_numbering_with_whitespaces
@@ -69,6 +72,8 @@ class TxtLoadOptions(LoadOptions):
             self.trailing_spaces_options = trailing_spaces_options
         if leading_spaces_options is not None:
             self.leading_spaces_options = leading_spaces_options
+        if encoding is not None:
+            self.encoding = encoding
 
         base = super(TxtLoadOptions, self)
         base.__init__(**kwargs)
@@ -169,6 +174,30 @@ class TxtLoadOptions(LoadOptions):
             self._leading_spaces_options = leading_spaces_options
         else:
             self._leading_spaces_options = allowed_values[int(leading_spaces_options) if six.PY3 else long(leading_spaces_options)]
+    
+    @property
+    def encoding(self):
+        """
+        Gets the encoding.  # noqa: E501
+
+        Gets or sets the encoding that will be used when loading Txt document. Can be null. Default is null.  # noqa: E501
+
+        :return: The encoding.  # noqa: E501
+        :rtype: str
+        """
+        return self._encoding
+
+    @encoding.setter
+    def encoding(self, encoding):
+        """
+        Sets the encoding.
+
+        Gets or sets the encoding that will be used when loading Txt document. Can be null. Default is null.  # noqa: E501
+
+        :param encoding: The encoding.  # noqa: E501
+        :type: str
+        """
+        self._encoding = encoding
 
     def to_dict(self):
         """Returns the model properties as a dict"""

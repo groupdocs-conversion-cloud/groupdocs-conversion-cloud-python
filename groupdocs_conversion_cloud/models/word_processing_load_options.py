@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="WordProcessingLoadOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -50,7 +50,10 @@ class WordProcessingLoadOptions(LoadOptions):
         'font_substitutes': 'dict(str, str)',
         'password': 'str',
         'hide_word_tracked_changes': 'bool',
-        'hide_comments': 'bool'
+        'hide_comments': 'bool',
+        'bookmarks_outline_level': 'int',
+        'headings_outline_levels': 'int',
+        'expanded_outline_levels': 'int'
     }
 
     attribute_map = {
@@ -59,10 +62,13 @@ class WordProcessingLoadOptions(LoadOptions):
         'font_substitutes': 'FontSubstitutes',
         'password': 'Password',
         'hide_word_tracked_changes': 'HideWordTrackedChanges',
-        'hide_comments': 'HideComments'
+        'hide_comments': 'HideComments',
+        'bookmarks_outline_level': 'BookmarksOutlineLevel',
+        'headings_outline_levels': 'HeadingsOutlineLevels',
+        'expanded_outline_levels': 'ExpandedOutlineLevels'
     }
 
-    def __init__(self, default_font=None, auto_font_substitution=None, font_substitutes=None, password=None, hide_word_tracked_changes=None, hide_comments=None, **kwargs):  # noqa: E501
+    def __init__(self, default_font=None, auto_font_substitution=None, font_substitutes=None, password=None, hide_word_tracked_changes=None, hide_comments=None, bookmarks_outline_level=None, headings_outline_levels=None, expanded_outline_levels=None, **kwargs):  # noqa: E501
         """Initializes new instance of WordProcessingLoadOptions"""  # noqa: E501
 
         self._default_font = None
@@ -71,6 +77,9 @@ class WordProcessingLoadOptions(LoadOptions):
         self._password = None
         self._hide_word_tracked_changes = None
         self._hide_comments = None
+        self._bookmarks_outline_level = None
+        self._headings_outline_levels = None
+        self._expanded_outline_levels = None
 
         if default_font is not None:
             self.default_font = default_font
@@ -84,6 +93,12 @@ class WordProcessingLoadOptions(LoadOptions):
             self.hide_word_tracked_changes = hide_word_tracked_changes
         if hide_comments is not None:
             self.hide_comments = hide_comments
+        if bookmarks_outline_level is not None:
+            self.bookmarks_outline_level = bookmarks_outline_level
+        if headings_outline_levels is not None:
+            self.headings_outline_levels = headings_outline_levels
+        if expanded_outline_levels is not None:
+            self.expanded_outline_levels = expanded_outline_levels
 
         base = super(WordProcessingLoadOptions, self)
         base.__init__(**kwargs)
@@ -240,6 +255,84 @@ class WordProcessingLoadOptions(LoadOptions):
         if hide_comments is None:
             raise ValueError("Invalid value for `hide_comments`, must not be `None`")  # noqa: E501
         self._hide_comments = hide_comments
+    
+    @property
+    def bookmarks_outline_level(self):
+        """
+        Gets the bookmarks_outline_level.  # noqa: E501
+
+        Specifies the default level in the document outline at which to display Word bookmarks. Default is 0. Valid range is 0 to 9.  # noqa: E501
+
+        :return: The bookmarks_outline_level.  # noqa: E501
+        :rtype: int
+        """
+        return self._bookmarks_outline_level
+
+    @bookmarks_outline_level.setter
+    def bookmarks_outline_level(self, bookmarks_outline_level):
+        """
+        Sets the bookmarks_outline_level.
+
+        Specifies the default level in the document outline at which to display Word bookmarks. Default is 0. Valid range is 0 to 9.  # noqa: E501
+
+        :param bookmarks_outline_level: The bookmarks_outline_level.  # noqa: E501
+        :type: int
+        """
+        if bookmarks_outline_level is None:
+            raise ValueError("Invalid value for `bookmarks_outline_level`, must not be `None`")  # noqa: E501
+        self._bookmarks_outline_level = bookmarks_outline_level
+    
+    @property
+    def headings_outline_levels(self):
+        """
+        Gets the headings_outline_levels.  # noqa: E501
+
+        Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline. Default is 0. Valid range is 0 to 9.  # noqa: E501
+
+        :return: The headings_outline_levels.  # noqa: E501
+        :rtype: int
+        """
+        return self._headings_outline_levels
+
+    @headings_outline_levels.setter
+    def headings_outline_levels(self, headings_outline_levels):
+        """
+        Sets the headings_outline_levels.
+
+        Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline. Default is 0. Valid range is 0 to 9.  # noqa: E501
+
+        :param headings_outline_levels: The headings_outline_levels.  # noqa: E501
+        :type: int
+        """
+        if headings_outline_levels is None:
+            raise ValueError("Invalid value for `headings_outline_levels`, must not be `None`")  # noqa: E501
+        self._headings_outline_levels = headings_outline_levels
+    
+    @property
+    def expanded_outline_levels(self):
+        """
+        Gets the expanded_outline_levels.  # noqa: E501
+
+        Specifies how many levels in the document outline to show expanded when the file is viewed. Default is 0. Valid range is 0 to 9. Note that this options will not work when saving to XPS.  # noqa: E501
+
+        :return: The expanded_outline_levels.  # noqa: E501
+        :rtype: int
+        """
+        return self._expanded_outline_levels
+
+    @expanded_outline_levels.setter
+    def expanded_outline_levels(self, expanded_outline_levels):
+        """
+        Sets the expanded_outline_levels.
+
+        Specifies how many levels in the document outline to show expanded when the file is viewed. Default is 0. Valid range is 0 to 9. Note that this options will not work when saving to XPS.  # noqa: E501
+
+        :param expanded_outline_levels: The expanded_outline_levels.  # noqa: E501
+        :type: int
+        """
+        if expanded_outline_levels is None:
+            raise ValueError("Invalid value for `expanded_outline_levels`, must not be `None`")  # noqa: E501
+        self._expanded_outline_levels = expanded_outline_levels
 
     def to_dict(self):
         """Returns the model properties as a dict"""

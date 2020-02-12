@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,7 +45,7 @@ class TestConvertApi(TestContext):
         test_file = TestFile.one_page_docx()
         settings = ConvertSettings()
         settings.file_path = test_file.folder + test_file.file_name
-        settings.format = "pdf"
+        settings.format = "jpg"
         settings.output_path = self.OUT_FOLDER
         request = ConvertDocumentRequest(settings)
         data = self.convert_api.convert_document(request)
