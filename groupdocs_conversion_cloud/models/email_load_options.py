@@ -52,7 +52,9 @@ class EmailLoadOptions(LoadOptions):
         'display_cc_email_address': 'bool',
         'display_bcc_email_address': 'bool',
         'time_zone_offset': 'str',
-        'convert_attachments': 'bool'
+        'convert_attachments': 'bool',
+        'field_labels': 'list[FieldLabel]',
+        'preserve_original_date': 'bool'
     }
 
     attribute_map = {
@@ -63,10 +65,12 @@ class EmailLoadOptions(LoadOptions):
         'display_cc_email_address': 'DisplayCcEmailAddress',
         'display_bcc_email_address': 'DisplayBccEmailAddress',
         'time_zone_offset': 'TimeZoneOffset',
-        'convert_attachments': 'ConvertAttachments'
+        'convert_attachments': 'ConvertAttachments',
+        'field_labels': 'FieldLabels',
+        'preserve_original_date': 'PreserveOriginalDate'
     }
 
-    def __init__(self, display_header=None, display_from_email_address=None, display_email_address=None, display_to_email_address=None, display_cc_email_address=None, display_bcc_email_address=None, time_zone_offset=None, convert_attachments=None, **kwargs):  # noqa: E501
+    def __init__(self, display_header=None, display_from_email_address=None, display_email_address=None, display_to_email_address=None, display_cc_email_address=None, display_bcc_email_address=None, time_zone_offset=None, convert_attachments=None, field_labels=None, preserve_original_date=None, **kwargs):  # noqa: E501
         """Initializes new instance of EmailLoadOptions"""  # noqa: E501
 
         self._display_header = None
@@ -77,6 +81,8 @@ class EmailLoadOptions(LoadOptions):
         self._display_bcc_email_address = None
         self._time_zone_offset = None
         self._convert_attachments = None
+        self._field_labels = None
+        self._preserve_original_date = None
 
         if display_header is not None:
             self.display_header = display_header
@@ -94,6 +100,10 @@ class EmailLoadOptions(LoadOptions):
             self.time_zone_offset = time_zone_offset
         if convert_attachments is not None:
             self.convert_attachments = convert_attachments
+        if field_labels is not None:
+            self.field_labels = field_labels
+        if preserve_original_date is not None:
+            self.preserve_original_date = preserve_original_date
 
         base = super(EmailLoadOptions, self)
         base.__init__(**kwargs)
@@ -306,6 +316,56 @@ class EmailLoadOptions(LoadOptions):
         if convert_attachments is None:
             raise ValueError("Invalid value for `convert_attachments`, must not be `None`")  # noqa: E501
         self._convert_attachments = convert_attachments
+    
+    @property
+    def field_labels(self):
+        """
+        Gets the field_labels.  # noqa: E501
+
+        The mapping between email message field and field text representation  # noqa: E501
+
+        :return: The field_labels.  # noqa: E501
+        :rtype: list[FieldLabel]
+        """
+        return self._field_labels
+
+    @field_labels.setter
+    def field_labels(self, field_labels):
+        """
+        Sets the field_labels.
+
+        The mapping between email message field and field text representation  # noqa: E501
+
+        :param field_labels: The field_labels.  # noqa: E501
+        :type: list[FieldLabel]
+        """
+        self._field_labels = field_labels
+    
+    @property
+    def preserve_original_date(self):
+        """
+        Gets the preserve_original_date.  # noqa: E501
+
+        Defines whether need to keep original date header string in mail message when saving or not (Default value is true)  # noqa: E501
+
+        :return: The preserve_original_date.  # noqa: E501
+        :rtype: bool
+        """
+        return self._preserve_original_date
+
+    @preserve_original_date.setter
+    def preserve_original_date(self, preserve_original_date):
+        """
+        Sets the preserve_original_date.
+
+        Defines whether need to keep original date header string in mail message when saving or not (Default value is true)  # noqa: E501
+
+        :param preserve_original_date: The preserve_original_date.  # noqa: E501
+        :type: bool
+        """
+        if preserve_original_date is None:
+            raise ValueError("Invalid value for `preserve_original_date`, must not be `None`")  # noqa: E501
+        self._preserve_original_date = preserve_original_date
 
     def to_dict(self):
         """Returns the model properties as a dict"""

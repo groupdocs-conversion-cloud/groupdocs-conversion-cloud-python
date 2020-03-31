@@ -10,6 +10,7 @@ from groupdocs_conversion_cloud.models.disc_usage import DiscUsage
 from groupdocs_conversion_cloud.models.document_metadata import DocumentMetadata
 from groupdocs_conversion_cloud.models.error import Error
 from groupdocs_conversion_cloud.models.error_details import ErrorDetails
+from groupdocs_conversion_cloud.models.field_label import FieldLabel
 from groupdocs_conversion_cloud.models.file_versions import FileVersions
 from groupdocs_conversion_cloud.models.files_list import FilesList
 from groupdocs_conversion_cloud.models.files_upload_result import FilesUploadResult
@@ -26,6 +27,7 @@ from groupdocs_conversion_cloud.models.diagram_load_options import DiagramLoadOp
 from groupdocs_conversion_cloud.models.email_load_options import EmailLoadOptions
 from groupdocs_conversion_cloud.models.file_version import FileVersion
 from groupdocs_conversion_cloud.models.html_convert_options import HtmlConvertOptions
+from groupdocs_conversion_cloud.models.html_load_options import HtmlLoadOptions
 from groupdocs_conversion_cloud.models.image_convert_options import ImageConvertOptions
 from groupdocs_conversion_cloud.models.image_load_options import ImageLoadOptions
 from groupdocs_conversion_cloud.models.one_load_options import OneLoadOptions

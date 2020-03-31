@@ -47,6 +47,7 @@ class HtmlConvertOptions(ConvertOptions):
     swagger_types = {
         'use_pdf': 'bool',
         'fixed_layout': 'bool',
+        'fixed_layout_show_borders': 'bool',
         'zoom': 'int',
         'watermark_options': 'WatermarkOptions'
     }
@@ -54,15 +55,17 @@ class HtmlConvertOptions(ConvertOptions):
     attribute_map = {
         'use_pdf': 'UsePdf',
         'fixed_layout': 'FixedLayout',
+        'fixed_layout_show_borders': 'FixedLayoutShowBorders',
         'zoom': 'Zoom',
         'watermark_options': 'WatermarkOptions'
     }
 
-    def __init__(self, use_pdf=None, fixed_layout=None, zoom=None, watermark_options=None, **kwargs):  # noqa: E501
+    def __init__(self, use_pdf=None, fixed_layout=None, fixed_layout_show_borders=None, zoom=None, watermark_options=None, **kwargs):  # noqa: E501
         """Initializes new instance of HtmlConvertOptions"""  # noqa: E501
 
         self._use_pdf = None
         self._fixed_layout = None
+        self._fixed_layout_show_borders = None
         self._zoom = None
         self._watermark_options = None
 
@@ -70,6 +73,8 @@ class HtmlConvertOptions(ConvertOptions):
             self.use_pdf = use_pdf
         if fixed_layout is not None:
             self.fixed_layout = fixed_layout
+        if fixed_layout_show_borders is not None:
+            self.fixed_layout_show_borders = fixed_layout_show_borders
         if zoom is not None:
             self.zoom = zoom
         if watermark_options is not None:
@@ -132,6 +137,32 @@ class HtmlConvertOptions(ConvertOptions):
         if fixed_layout is None:
             raise ValueError("Invalid value for `fixed_layout`, must not be `None`")  # noqa: E501
         self._fixed_layout = fixed_layout
+    
+    @property
+    def fixed_layout_show_borders(self):
+        """
+        Gets the fixed_layout_show_borders.  # noqa: E501
+
+        Show page borders when converting to fixed layout. Default is True  # noqa: E501
+
+        :return: The fixed_layout_show_borders.  # noqa: E501
+        :rtype: bool
+        """
+        return self._fixed_layout_show_borders
+
+    @fixed_layout_show_borders.setter
+    def fixed_layout_show_borders(self, fixed_layout_show_borders):
+        """
+        Sets the fixed_layout_show_borders.
+
+        Show page borders when converting to fixed layout. Default is True  # noqa: E501
+
+        :param fixed_layout_show_borders: The fixed_layout_show_borders.  # noqa: E501
+        :type: bool
+        """
+        if fixed_layout_show_borders is None:
+            raise ValueError("Invalid value for `fixed_layout_show_borders`, must not be `None`")  # noqa: E501
+        self._fixed_layout_show_borders = fixed_layout_show_borders
     
     @property
     def zoom(self):
