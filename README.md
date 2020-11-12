@@ -1,4 +1,5 @@
 # GroupDocs.Conversion Cloud Python SDK
+
 Python package for communicating with the GroupDocs.Conversion Cloud API
 
 ## Requirements
@@ -6,13 +7,14 @@ Python package for communicating with the GroupDocs.Conversion Cloud API
 Python 2.7 or 3.4+
 
 ## Installation
+
 Install `groupdocs-conversion-cloud` with [PIP](https://pypi.org/project/pip/) from [PyPI](https://pypi.org/) by:
 
 ```sh
 pip install groupdocs-conversion-cloud
 ```
 
-Or clone repository and install it via [Setuptools](http://pypi.python.org/pypi/setuptools): 
+Or clone repository and install it via [Setuptools](http://pypi.python.org/pypi/setuptools):
 
 ```sh
 python setup.py install
@@ -41,12 +43,23 @@ try:
     # Print out supported conversion types
     print("Supported conversion types:")
     for format in response:
-        print('{0} to [{1}]'.format(format.source_format, ', '.join(format.target_formats))) 
+        print('{0} to [{1}]'.format(format.source_format, ', '.join(format.target_formats)))
 except groupdocs_conversion_cloud.ApiException as e:
     print("Exception when calling get_supported_conversion_types: {0}".format(e.message))
 ```
 
 ## Licensing
+
 GroupDocs.Conversion Cloud Python SDK licensed under [MIT License](http://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-python/LICENSE).
 
-[Home](https://www.groupdocs.cloud/) | [Product Page](https://products.groupdocs.cloud/conversion/python) | [Docs](https://docs.groupdocs.cloud/conversion/) | [Demos](https://products.groupdocs.app/conversion/family) | [API Reference](https://apireference.groupdocs.cloud/conversion/) | [Examples](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-python-samples) | [Blog](https://blog.groupdocs.cloud/category/conversion/) | [Free Support](https://forum.groupdocs.cloud/c/conversion) | [Free Trial](https://purchase.groupdocs.cloud/trial)
+## Resources
+
++ [**Website**](https://www.groupdocs.cloud)
++ [**Product Home**](https://products.groupdocs.cloud/conversion)
++ [**Documentation**](https://docs.groupdocs.cloud/conversion)
++ [**Free Support Forum**](https://forum.groupdocs.cloud/c/conversion)
++ [**Blog**](https://blog.groupdocs.cloud/category/conversion)
+
+## Contact Us
+
+Your feedback is very important to us. Please feel free to contact us using our [Support Forums](https://forum.groupdocs.cloud/c/conversion).

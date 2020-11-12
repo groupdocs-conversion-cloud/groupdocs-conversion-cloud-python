@@ -65,5 +65,18 @@ class TestConvertApi(TestContext):
         data = self.convert_api.convert_document_download(request)
         self.assertGreater(os.path.getsize(data), 0)
 
+    def test_convert_document_direct(self):
+        """
+        Test case for convert_document with file result without using cloud storage
+
+        """
+        test_file = TestFile.four_pages_docx()
+        local_file_path = self.get_test_file_path(test_file)
+        format = "pdf"
+        
+        request = ConvertDocumentDirectRequest(format, local_file_path)
+        data = self.convert_api.convert_document_direct(request)
+        self.assertGreater(os.path.getsize(data), 0)        
+
 if __name__ == '__main__':
     unittest.main()
