@@ -1,65 +1,91 @@
-# GroupDocs.Conversion Cloud Python SDK
+![](https://img.shields.io/badge/api-v2.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/groupdocs-conversion-cloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/groupdocs-conversion-cloud) ![PyPI - Implementation](https://img.shields.io/pypi/implementation/groupdocs-conversion-cloud) ![PyPI - Wheel](https://img.shields.io/pypi/wheel/groupdocs-conversion-cloud) [![GitHub license](https://img.shields.io/github/license/groupdocs-conversion-cloud/groupdocs-conversion-cloud-python)](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-python/blob/master/LICENSE) 
 
-Python package for communicating with the GroupDocs.Conversion Cloud API
+# Python SDK to Convert Documents in the Cloud
 
-## Requirements
+[GroupDocs.Conversion Cloud SDK for Python](https://products.groupdocs.cloud/conversion/python) wraps GroupDocs.Conversion RESTful APIs so you may integrate **Document Conversion** features in your own apps with zero initial cost.
 
-Python 2.7 or 3.4+
+GroupDocs.Conversion Cloud API allows the developers to convert between 50+ file formats including Word documents, Excel spreadsheets, PowerPoint presentations, PDF, OpenDocument files, images & more.
 
-## Installation
+## Document Conversion REST API
 
-Install `groupdocs-conversion-cloud` with [PIP](https://pypi.org/project/pip/) from [PyPI](https://pypi.org/) by:
+- Convert the whole document to the desired target format.
+- Convert specific document page(s) or a page range.
+- Auto-detect source document format without requiring the file extension.
+- Load source document with extended options, such as specify password for password-protected documents.
+- Load specific part of the document.
+- Show or hide document comments.
+- Obtain all supported conversion formats list.
+- Replace missing fonts with any other font.
+- Add text or image watermarks to any page.
+- Specify resolution and quality for resultant images.
+- Extract metadata & basic information about the source document.
+- Integrated storage API.
+
+Check out the [Developer's Guide](https://docs.groupdocs.cloud/conversion/developer-guide/) to know more about GroupDocs.Conversion REST API.
+
+## Microsoft File Formats
+
+**Microsoft Word:** DOC, DOCM, DOCX, DOT, DOTM, DOTX\
+**Microsoft Excel:** XLS, XLSX, XLSB, XLSM\
+**Microsoft PowerPoint:** PPT, PPTX, PPS, PPSX\
+**Microsoft Project:** MPP, MPT\
+**Microsoft Outlook:** MSG, EML\
+**Microsoft Visio:** VSD, VDX, VSS, VSX, VST, VTX, VSDX, VDW, VSSX, VSTX, VSDM, VSTM, VSSM\
+**Microsoft OneNote:** ONE
+
+## Other Formats
+
+**Page Layout Formats:** PDF, XPS\
+**OpenDocument:** ODT, OTT, ODS, ODP, OTP, OTS, ODG\
+**CAD:** DXF, DWG, IFC, STL\
+**Images:** DCM, BMP, GIF, JPG, PNG, TIFF, WebP, DjVu, SVG, DNG, ICO\
+**Web:** HTML, MHT, MHTML\
+**Emails:** EML, EMLX\
+**eBooks:** EPUB, MOBI\
+**Metafile:** WMF, EMF\
+**LaTeX:** TEX\
+**Others:** TXT, RTF, CSV, TSV, XML
+
+## Get Started with GroupDocs.Conversion Cloud SDK for Python
+
+First create an account at [GroupDocs for Cloud](https://dashboard.groupdocs.cloud/) and get your application information. Next, execute the following command.
 
 ```sh
 pip install groupdocs-conversion-cloud
 ```
 
-Or clone repository and install it via [Setuptools](http://pypi.python.org/pypi/setuptools):
+Or clone this repository and install it via [Setuptools](http://pypi.python.org/pypi/setuptools).
 
 ```sh
 python setup.py install
 ```
 
-## Getting Started
-
-Please follow the [installation procedure](#installation) and then run following:
+## Convert DOCX to PDF in the Cloud
 
 ```python
-# Import module
 import groupdocs_conversion_cloud
 
-# Get your app_sid and app_key at https://dashboard.groupdocs.cloud (free registration is required).
-app_sid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-app_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+app_sid = "XXXX-XXXX-XXXX-XXXX" 
+app_key = "XXXXXXXXXXXXXXXX" 
 
-# Create instance of the API
-api = groupdocs_conversion_cloud.InfoApi.from_keys(app_sid, app_key)
+# Create necessary API instances
+apiInstance = groupdocs_conversion_cloud.ConvertApi.from_keys(Common.app_sid, Common.app_key)
 
-try:
-    # Retrieve supported conversion types
-    request = groupdocs_conversion_cloud.GetSupportedConversionTypesRequest()
-    response = api.get_supported_conversion_types(request)
+# Prepare convert settings
+settings = groupdocs_conversion_cloud.ConvertSettings()
+settings.file_path = "WordProcessing/four-pages.docx"
+settings.format = "pdf"
+settings.output_path = "converted"
 
-    # Print out supported conversion types
-    print("Supported conversion types:")
-    for format in response:
-        print('{0} to [{1}]'.format(format.source_format, ', '.join(format.target_formats)))
-except groupdocs_conversion_cloud.ApiException as e:
-    print("Exception when calling get_supported_conversion_types: {0}".format(e.message))
+# Convert
+result = apiInstance.convert_document(groupdocs_conversion_cloud.ConvertDocumentRequest(settings))
 ```
 
-## Licensing
+## GroupDocs.Conversion Cloud SDKs in Popular Languages
 
-GroupDocs.Conversion Cloud Python SDK licensed under [MIT License](http://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-python/LICENSE).
+| .NET | Java | PHP | Python | Ruby | Node.js | Android |
+|---|---|---|---|---|---|---|
+| [GitHub](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-dotnet) | [GitHub](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-java) | [GitHub](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-php) | [GitHub](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-python) | [GitHub](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-ruby)  | [GitHub](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-node) | [GitHub](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-android) |
+| [NuGet](https://www.nuget.org/packages/GroupDocs.Conversion-Cloud/) | [Maven](https://repository.groupdocs.cloud/webapp/#/artifacts/browse/tree/General/repo/com/groupdocs/groupdocs-conversion-cloud) | [Composer](https://packagist.org/packages/groupdocscloud/groupdocs-conversion-cloud) | [PIP](https://pypi.org/project/groupdocs-conversion-cloud/) | [GEM](https://rubygems.org/gems/groupdocs_conversion_cloud)  | [NPM](https://www.npmjs.com/package/groupdocs-conversion-cloud) |  | 
 
-## Resources
-
-+ [**Website**](https://www.groupdocs.cloud)
-+ [**Product Home**](https://products.groupdocs.cloud/conversion)
-+ [**Documentation**](https://docs.groupdocs.cloud/conversion)
-+ [**Free Support Forum**](https://forum.groupdocs.cloud/c/conversion)
-+ [**Blog**](https://blog.groupdocs.cloud/category/conversion)
-
-## Contact Us
-
-Your feedback is very important to us. Please feel free to contact us using our [Support Forums](https://forum.groupdocs.cloud/c/conversion).
+[Home](https://www.groupdocs.cloud/) | [Product Page](https://products.groupdocs.cloud/conversion/python) | [Documentation](https://docs.groupdocs.cloud/conversion/) | [Live Demo](https://products.groupdocs.app/conversion/total) | [API Reference](https://apireference.groupdocs.cloud/conversion/) | [Code Samples](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-python-samples) | [Blog](https://blog.groupdocs.cloud/category/conversion/) | [Free Support](https://forum.groupdocs.cloud/c/conversion) | [Free Trial](https://dashboard.groupdocs.cloud)
