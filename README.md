@@ -65,11 +65,13 @@ python setup.py install
 ```python
 import groupdocs_conversion_cloud
 
-app_sid = "XXXX-XXXX-XXXX-XXXX" 
-app_key = "XXXXXXXXXXXXXXXX" 
+# Get Client Id and Client Secret from https://dashboard.groupdocs.cloud
+my_client_id = ""
+my_client_secret = ""
 
-# Create necessary API instances
-apiInstance = groupdocs_conversion_cloud.ConvertApi.from_keys(Common.app_sid, Common.app_key)
+# Create instance of the API
+configuration = groupdocs_conversion_cloud.Configuration(my_client_id, my_client_secret)
+apiInstance = groupdocs_conversion_cloud.InfoApi.from_config(configuration)
 
 # Prepare convert settings
 settings = groupdocs_conversion_cloud.ConvertSettings()
