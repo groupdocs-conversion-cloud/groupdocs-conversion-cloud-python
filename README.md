@@ -71,7 +71,7 @@ my_client_secret = ""
 
 # Create instance of the API
 configuration = groupdocs_conversion_cloud.Configuration(my_client_id, my_client_secret)
-apiInstance = groupdocs_conversion_cloud.InfoApi.from_config(configuration)
+apiInstance = groupdocs_conversion_cloud.ConvertApi.from_config(configuration)
 
 # Prepare convert settings
 settings = groupdocs_conversion_cloud.ConvertSettings()
