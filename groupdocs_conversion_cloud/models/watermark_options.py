@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="WatermarkOptions.py">
-#   Copyright (c) 2003-2020 Aspose Pty Ltd
+#   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,6 +46,8 @@ class WatermarkOptions(object):
         'text': 'str',
         'font_name': 'str',
         'font_size': 'int',
+        'bold': 'bool',
+        'italic': 'bool',
         'color': 'str',
         'width': 'int',
         'height': 'int',
@@ -61,6 +63,8 @@ class WatermarkOptions(object):
         'text': 'Text',
         'font_name': 'FontName',
         'font_size': 'FontSize',
+        'bold': 'Bold',
+        'italic': 'Italic',
         'color': 'Color',
         'width': 'Width',
         'height': 'Height',
@@ -72,12 +76,14 @@ class WatermarkOptions(object):
         'image': 'Image'
     }
 
-    def __init__(self, text=None, font_name=None, font_size=None, color=None, width=None, height=None, top=None, left=None, rotation_angle=None, transparency=None, background=None, image=None, **kwargs):  # noqa: E501
+    def __init__(self, text=None, font_name=None, font_size=None, bold=None, italic=None, color=None, width=None, height=None, top=None, left=None, rotation_angle=None, transparency=None, background=None, image=None, **kwargs):  # noqa: E501
         """Initializes new instance of WatermarkOptions"""  # noqa: E501
 
         self._text = None
         self._font_name = None
         self._font_size = None
+        self._bold = None
+        self._italic = None
         self._color = None
         self._width = None
         self._height = None
@@ -94,6 +100,10 @@ class WatermarkOptions(object):
             self.font_name = font_name
         if font_size is not None:
             self.font_size = font_size
+        if bold is not None:
+            self.bold = bold
+        if italic is not None:
+            self.italic = italic
         if color is not None:
             self.color = color
         if width is not None:
@@ -186,6 +196,58 @@ class WatermarkOptions(object):
         if font_size is None:
             raise ValueError("Invalid value for `font_size`, must not be `None`")  # noqa: E501
         self._font_size = font_size
+    
+    @property
+    def bold(self):
+        """
+        Gets the bold.  # noqa: E501
+
+        Watermark font bold style if text watermark is applied  # noqa: E501
+
+        :return: The bold.  # noqa: E501
+        :rtype: bool
+        """
+        return self._bold
+
+    @bold.setter
+    def bold(self, bold):
+        """
+        Sets the bold.
+
+        Watermark font bold style if text watermark is applied  # noqa: E501
+
+        :param bold: The bold.  # noqa: E501
+        :type: bool
+        """
+        if bold is None:
+            raise ValueError("Invalid value for `bold`, must not be `None`")  # noqa: E501
+        self._bold = bold
+    
+    @property
+    def italic(self):
+        """
+        Gets the italic.  # noqa: E501
+
+        Watermark font italic style if text watermark is applied  # noqa: E501
+
+        :return: The italic.  # noqa: E501
+        :rtype: bool
+        """
+        return self._italic
+
+    @italic.setter
+    def italic(self, italic):
+        """
+        Sets the italic.
+
+        Watermark font italic style if text watermark is applied  # noqa: E501
+
+        :param italic: The italic.  # noqa: E501
+        :type: bool
+        """
+        if italic is None:
+            raise ValueError("Invalid value for `italic`, must not be `None`")  # noqa: E501
+        self._italic = italic
     
     @property
     def color(self):

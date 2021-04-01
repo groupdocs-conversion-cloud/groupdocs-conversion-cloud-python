@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="ConvertSettings.py">
-#   Copyright (c) 2003-2020 Aspose Pty Ltd
+#   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -48,7 +48,8 @@ class ConvertSettings(object):
         'format': 'str',
         'load_options': 'LoadOptions',
         'convert_options': 'ConvertOptions',
-        'output_path': 'str'
+        'output_path': 'str',
+        'fonts_path': 'str'
     }
 
     attribute_map = {
@@ -57,10 +58,11 @@ class ConvertSettings(object):
         'format': 'Format',
         'load_options': 'LoadOptions',
         'convert_options': 'ConvertOptions',
-        'output_path': 'OutputPath'
+        'output_path': 'OutputPath',
+        'fonts_path': 'FontsPath'
     }
 
-    def __init__(self, storage_name=None, file_path=None, format=None, load_options=None, convert_options=None, output_path=None, **kwargs):  # noqa: E501
+    def __init__(self, storage_name=None, file_path=None, format=None, load_options=None, convert_options=None, output_path=None, fonts_path=None, **kwargs):  # noqa: E501
         """Initializes new instance of ConvertSettings"""  # noqa: E501
 
         self._storage_name = None
@@ -69,6 +71,7 @@ class ConvertSettings(object):
         self._load_options = None
         self._convert_options = None
         self._output_path = None
+        self._fonts_path = None
 
         if storage_name is not None:
             self.storage_name = storage_name
@@ -82,6 +85,8 @@ class ConvertSettings(object):
             self.convert_options = convert_options
         if output_path is not None:
             self.output_path = output_path
+        if fonts_path is not None:
+            self.fonts_path = fonts_path
     
     @property
     def storage_name(self):
@@ -234,6 +239,30 @@ class ConvertSettings(object):
         :type: str
         """
         self._output_path = output_path
+    
+    @property
+    def fonts_path(self):
+        """
+        Gets the fonts_path.  # noqa: E501
+
+        The path to directory containing custom fonts in storage  # noqa: E501
+
+        :return: The fonts_path.  # noqa: E501
+        :rtype: str
+        """
+        return self._fonts_path
+
+    @fonts_path.setter
+    def fonts_path(self, fonts_path):
+        """
+        Sets the fonts_path.
+
+        The path to directory containing custom fonts in storage  # noqa: E501
+
+        :param fonts_path: The fonts_path.  # noqa: E501
+        :type: str
+        """
+        self._fonts_path = fonts_path
 
     def to_dict(self):
         """Returns the model properties as a dict"""
