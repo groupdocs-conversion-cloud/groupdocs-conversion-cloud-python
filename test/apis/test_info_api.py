@@ -59,6 +59,14 @@ class TestInfoApi(TestContext):
         data = self.info_api.get_document_metadata(request)
 
         self.assertTrue(data.page_count == 4)
+    
+    def test_get_info_returns_file_not_found(self):
+        test_file = TestFile.not_exist()
+        file_path = test_file.folder + test_file.file_name
+        request = GetDocumentMetadataRequest(file_path)
+        with self.assertRaises(ApiException) as context:
+            self.info_api.get_document_metadata(request)            
+        self.assertTrue("AmazonS3 Storage exception: The specified key does not exist." in context.exception.message)
 
 if __name__ == '__main__':
     unittest.main()

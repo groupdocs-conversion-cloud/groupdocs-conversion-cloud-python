@@ -41,14 +41,16 @@ class ApiException(Exception):
                 data = json.loads(http_resp.data)
                 
                 error = data.get("error")
-                error_api = data.get("Error")
                 
                 if error is not None:
-                    self.message = error
-                elif error_api is not None:
-                    self.message = error_api.get("Message") if error_api.get("Message") is not None else http_resp.data
+                    self.message = error if type(error) is str else error.get("message")                 
                 else:
-                    self.message = http_resp.data   
+                    message = data.get("message")
+                    if message is not None:
+                        self.message = message
+                        self.code = data.get("code")
+                    else:
+                        self.message = http_resp.data   
             except ValueError:
                 self.message = http_resp.data
         else:
