@@ -56,7 +56,8 @@ class WatermarkOptions(object):
         'rotation_angle': 'int',
         'transparency': 'float',
         'background': 'bool',
-        'image': 'str'
+        'image': 'str',
+        'auto_align': 'bool'
     }
 
     attribute_map = {
@@ -73,10 +74,11 @@ class WatermarkOptions(object):
         'rotation_angle': 'RotationAngle',
         'transparency': 'Transparency',
         'background': 'Background',
-        'image': 'Image'
+        'image': 'Image',
+        'auto_align': 'AutoAlign'
     }
 
-    def __init__(self, text=None, font_name=None, font_size=None, bold=None, italic=None, color=None, width=None, height=None, top=None, left=None, rotation_angle=None, transparency=None, background=None, image=None, **kwargs):  # noqa: E501
+    def __init__(self, text=None, font_name=None, font_size=None, bold=None, italic=None, color=None, width=None, height=None, top=None, left=None, rotation_angle=None, transparency=None, background=None, image=None, auto_align=None, **kwargs):  # noqa: E501
         """Initializes new instance of WatermarkOptions"""  # noqa: E501
 
         self._text = None
@@ -93,6 +95,7 @@ class WatermarkOptions(object):
         self._transparency = None
         self._background = None
         self._image = None
+        self._auto_align = None
 
         if text is not None:
             self.text = text
@@ -122,6 +125,8 @@ class WatermarkOptions(object):
             self.background = background
         if image is not None:
             self.image = image
+        if auto_align is not None:
+            self.auto_align = auto_align
     
     @property
     def text(self):
@@ -478,6 +483,32 @@ class WatermarkOptions(object):
         :type: str
         """
         self._image = image
+    
+    @property
+    def auto_align(self):
+        """
+        Gets the auto_align.  # noqa: E501
+
+        Auto scale the watermark. If the value is true the font size and the position is automatically calculated to fit the page size.  # noqa: E501
+
+        :return: The auto_align.  # noqa: E501
+        :rtype: bool
+        """
+        return self._auto_align
+
+    @auto_align.setter
+    def auto_align(self, auto_align):
+        """
+        Sets the auto_align.
+
+        Auto scale the watermark. If the value is true the font size and the position is automatically calculated to fit the page size.  # noqa: E501
+
+        :param auto_align: The auto_align.  # noqa: E501
+        :type: bool
+        """
+        if auto_align is None:
+            raise ValueError("Invalid value for `auto_align`, must not be `None`")  # noqa: E501
+        self._auto_align = auto_align
 
     def to_dict(self):
         """Returns the model properties as a dict"""

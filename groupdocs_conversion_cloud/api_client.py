@@ -74,12 +74,12 @@ class ApiClient(object):
         self.configuration = configuration
         self.pool = None
         self.rest_client = rest.RESTClientObject(configuration)
-        self.default_headers = {'x-groupdocs-client': 'python sdk', 'x-groupdocs-version': '21.9'}
+        self.default_headers = {'x-groupdocs-client': 'python sdk', 'x-groupdocs-version': '21.10'}
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'python sdk 21.9'
+        self.user_agent = 'python sdk 21.10'
 
     def __del__(self):
         if self.pool is not None:

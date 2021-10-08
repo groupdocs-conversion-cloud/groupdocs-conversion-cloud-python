@@ -50,7 +50,8 @@ class WordProcessingConvertOptions(ConvertOptions):
         'dpi': 'float',
         'password': 'str',
         'zoom': 'int',
-        'watermark_options': 'WatermarkOptions'
+        'watermark_options': 'WatermarkOptions',
+        'pdf_recognition_mode': 'str'
     }
 
     attribute_map = {
@@ -59,10 +60,11 @@ class WordProcessingConvertOptions(ConvertOptions):
         'dpi': 'Dpi',
         'password': 'Password',
         'zoom': 'Zoom',
-        'watermark_options': 'WatermarkOptions'
+        'watermark_options': 'WatermarkOptions',
+        'pdf_recognition_mode': 'PdfRecognitionMode'
     }
 
-    def __init__(self, width=None, height=None, dpi=None, password=None, zoom=None, watermark_options=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, dpi=None, password=None, zoom=None, watermark_options=None, pdf_recognition_mode=None, **kwargs):  # noqa: E501
         """Initializes new instance of WordProcessingConvertOptions"""  # noqa: E501
 
         self._width = None
@@ -71,6 +73,7 @@ class WordProcessingConvertOptions(ConvertOptions):
         self._password = None
         self._zoom = None
         self._watermark_options = None
+        self._pdf_recognition_mode = None
 
         if width is not None:
             self.width = width
@@ -84,6 +87,8 @@ class WordProcessingConvertOptions(ConvertOptions):
             self.zoom = zoom
         if watermark_options is not None:
             self.watermark_options = watermark_options
+        if pdf_recognition_mode is not None:
+            self.pdf_recognition_mode = pdf_recognition_mode
 
         base = super(WordProcessingConvertOptions, self)
         base.__init__(**kwargs)
@@ -242,6 +247,40 @@ class WordProcessingConvertOptions(ConvertOptions):
         :type: WatermarkOptions
         """
         self._watermark_options = watermark_options
+    
+    @property
+    def pdf_recognition_mode(self):
+        """
+        Gets the pdf_recognition_mode.  # noqa: E501
+
+        Recognition mode when converting from pdf  # noqa: E501
+
+        :return: The pdf_recognition_mode.  # noqa: E501
+        :rtype: str
+        """
+        return self._pdf_recognition_mode
+
+    @pdf_recognition_mode.setter
+    def pdf_recognition_mode(self, pdf_recognition_mode):
+        """
+        Sets the pdf_recognition_mode.
+
+        Recognition mode when converting from pdf  # noqa: E501
+
+        :param pdf_recognition_mode: The pdf_recognition_mode.  # noqa: E501
+        :type: str
+        """
+        if pdf_recognition_mode is None:
+            raise ValueError("Invalid value for `pdf_recognition_mode`, must not be `None`")  # noqa: E501
+        allowed_values = ["Textbox", "Flow"]  # noqa: E501
+        if not pdf_recognition_mode.isdigit():	
+            if pdf_recognition_mode not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `pdf_recognition_mode` ({0}), must be one of {1}"  # noqa: E501
+                    .format(pdf_recognition_mode, allowed_values))
+            self._pdf_recognition_mode = pdf_recognition_mode
+        else:
+            self._pdf_recognition_mode = allowed_values[int(pdf_recognition_mode) if six.PY3 else long(pdf_recognition_mode)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""
