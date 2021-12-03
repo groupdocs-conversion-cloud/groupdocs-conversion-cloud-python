@@ -6,9 +6,10 @@ from __future__ import absolute_import
 
 # import apis
 from groupdocs_conversion_cloud.apis.convert_api import ConvertApi
-from groupdocs_conversion_cloud.apis.info_api import InfoApi
 from groupdocs_conversion_cloud.apis.file_api import FileApi
 from groupdocs_conversion_cloud.apis.folder_api import FolderApi
+from groupdocs_conversion_cloud.apis.info_api import InfoApi
+from groupdocs_conversion_cloud.apis.license_api import LicenseApi
 from groupdocs_conversion_cloud.apis.storage_api import StorageApi
 
 # import requests
@@ -25,11 +26,14 @@ from groupdocs_conversion_cloud.api_client import ApiClient
 from groupdocs_conversion_cloud.configuration import Configuration
 
 # import models
+from groupdocs_conversion_cloud.models.consumption_result import ConsumptionResult
 from groupdocs_conversion_cloud.models.convert_options import ConvertOptions
 from groupdocs_conversion_cloud.models.convert_settings import ConvertSettings
 from groupdocs_conversion_cloud.models.disc_usage import DiscUsage
+from groupdocs_conversion_cloud.models.document_metadata import DocumentMetadata
 from groupdocs_conversion_cloud.models.error import Error
 from groupdocs_conversion_cloud.models.error_details import ErrorDetails
+from groupdocs_conversion_cloud.models.field_label import FieldLabel
 from groupdocs_conversion_cloud.models.file_versions import FileVersions
 from groupdocs_conversion_cloud.models.files_list import FilesList
 from groupdocs_conversion_cloud.models.files_upload_result import FilesUploadResult
@@ -46,6 +50,7 @@ from groupdocs_conversion_cloud.models.diagram_load_options import DiagramLoadOp
 from groupdocs_conversion_cloud.models.email_load_options import EmailLoadOptions
 from groupdocs_conversion_cloud.models.file_version import FileVersion
 from groupdocs_conversion_cloud.models.html_convert_options import HtmlConvertOptions
+from groupdocs_conversion_cloud.models.html_load_options import HtmlLoadOptions
 from groupdocs_conversion_cloud.models.image_convert_options import ImageConvertOptions
 from groupdocs_conversion_cloud.models.image_load_options import ImageLoadOptions
 from groupdocs_conversion_cloud.models.one_load_options import OneLoadOptions
