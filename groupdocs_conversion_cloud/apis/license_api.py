@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2021 Aspose Pty Ltd
+#   Copyright (c) 2003-2022 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,6 +31,7 @@ import re  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
+import json
 
 from groupdocs_conversion_cloud.auth import Auth
 from groupdocs_conversion_cloud.api_client import ApiClient

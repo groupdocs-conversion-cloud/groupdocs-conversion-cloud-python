@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2021 Aspose Pty Ltd
+#   Copyright (c) 2003-2022 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,6 +31,7 @@ import re  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
+import json
 
 from groupdocs_conversion_cloud.auth import Auth
 from groupdocs_conversion_cloud.api_client import ApiClient
@@ -276,6 +277,8 @@ class ConvertApi(object):
         :param file file: Input file to convert (required)
         :param int from_page: Page start conversion from
         :param int pages_count: Number of pages to convert
+        :param str load_options: Input file load options
+        :param str convert_options: Conversion options
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -347,6 +350,10 @@ class ConvertApi(object):
         local_var_files = []
         if request.file is not None:
             local_var_files.append((self.__downcase_first_letter('File'), request.file))  # noqa: E501
+        if request.load_options is not None:
+            form_params.append((self.__downcase_first_letter('loadOptions'), json.dumps(request.load_options.to_dict(), indent = 4)))  # noqa: E501
+        if request.convert_options is not None:
+            form_params.append((self.__downcase_first_letter('convertOptions'), json.dumps(request.convert_options.to_dict(), indent = 4)))  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
@@ -387,7 +394,7 @@ class ConvertApi(object):
 
 # --------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="convert_document_request.py">
-#   Copyright (c) 2003-2021 Aspose Pty Ltd
+#   Copyright (c) 2003-2022 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -423,7 +430,7 @@ class ConvertDocumentRequest(object):
 
 # --------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="convert_document_direct_request.py">
-#   Copyright (c) 2003-2021 Aspose Pty Ltd
+#   Copyright (c) 2003-2022 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -453,11 +460,15 @@ class ConvertDocumentDirectRequest(object):
     :param file Input file to convert
     :param from_page Page start conversion from
     :param pages_count Number of pages to convert
+    :param load_options Input file load options
+    :param convert_options Conversion options
     """
 
-    def __init__(self, format, file, from_page=None, pages_count=None):
+    def __init__(self, format, file, from_page=None, pages_count=None, load_options=None, convert_options=None):
         """Initializes new instance of ConvertDocumentDirectRequest."""  # noqa: E501
         self.format = format
         self.file = file
         self.from_page = from_page
         self.pages_count = pages_count
+        self.load_options = load_options
+        self.convert_options = convert_options

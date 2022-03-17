@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="LoadOptions.py">
-#   Copyright (c) 2003-2021 Aspose Pty Ltd
+#   Copyright (c) 2003-2022 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,13 +43,44 @@ class LoadOptions(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'format': 'str'
     }
 
     attribute_map = {
+        'format': 'Format'
     }
 
-    def __init__(self, **kwargs):  # noqa: E501
+    def __init__(self, format=None, **kwargs):  # noqa: E501
         """Initializes new instance of LoadOptions"""  # noqa: E501
+
+        self._format = None
+
+        if format is not None:
+            self.format = format
+    
+    @property
+    def format(self):
+        """
+        Gets the format.  # noqa: E501
+
+        The format of input file, (\"docx\", for example). This field must be filled with correct input file format when using ConvertDirect method, which accept input file as binary stream, and, because of that, API can correctly handle LoadOptions. In regular conversion, the input file format taken from the input file name and this field ignored.  # noqa: E501
+
+        :return: The format.  # noqa: E501
+        :rtype: str
+        """
+        return self._format
+
+    @format.setter
+    def format(self, format):
+        """
+        Sets the format.
+
+        The format of input file, (\"docx\", for example). This field must be filled with correct input file format when using ConvertDirect method, which accept input file as binary stream, and, because of that, API can correctly handle LoadOptions. In regular conversion, the input file format taken from the input file name and this field ignored.  # noqa: E501
+
+        :param format: The format.  # noqa: E501
+        :type: str
+        """
+        self._format = format
 
     def to_dict(self):
         """Returns the model properties as a dict"""

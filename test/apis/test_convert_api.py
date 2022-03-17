@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2021 Aspose Pty Ltd
+#   Copyright (c) 2003-2022 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -77,6 +77,23 @@ class TestConvertApi(TestContext):
         request = ConvertDocumentDirectRequest(format, local_file_path)
         data = self.convert_api.convert_document_direct(request)
         self.assertGreater(os.path.getsize(data), 0)        
+
+    def test_convert_document_direct_opts(self):
+        """
+        Test case for convert_document with file result without using cloud storage
+        and with options
+        """
+        test_file = TestFile.password_protected_docx()
+        local_file_path = self.get_test_file_path(test_file)
+        format = "pdf"
+
+        load_options = DocxLoadOptions()
+        load_options.format = "docx"
+        load_options.password = test_file.password
+        
+        request = ConvertDocumentDirectRequest(format, local_file_path, None, None, load_options)
+        data = self.convert_api.convert_document_direct(request)
+        self.assertGreater(os.path.getsize(data), 0) 
 
 if __name__ == '__main__':
     unittest.main()
