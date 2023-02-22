@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="WordProcessingConvertOptions.py">
-#   Copyright (c) 2003-2022 Aspose Pty Ltd
+#   Copyright (c) 2003-2023 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -51,7 +51,9 @@ class WordProcessingConvertOptions(ConvertOptions):
         'password': 'str',
         'zoom': 'int',
         'watermark_options': 'WatermarkOptions',
-        'pdf_recognition_mode': 'str'
+        'pdf_recognition_mode': 'str',
+        'page_size': 'str',
+        'page_orientation': 'str'
     }
 
     attribute_map = {
@@ -61,10 +63,12 @@ class WordProcessingConvertOptions(ConvertOptions):
         'password': 'Password',
         'zoom': 'Zoom',
         'watermark_options': 'WatermarkOptions',
-        'pdf_recognition_mode': 'PdfRecognitionMode'
+        'pdf_recognition_mode': 'PdfRecognitionMode',
+        'page_size': 'PageSize',
+        'page_orientation': 'PageOrientation'
     }
 
-    def __init__(self, width=None, height=None, dpi=None, password=None, zoom=None, watermark_options=None, pdf_recognition_mode=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, dpi=None, password=None, zoom=None, watermark_options=None, pdf_recognition_mode=None, page_size=None, page_orientation=None, **kwargs):  # noqa: E501
         """Initializes new instance of WordProcessingConvertOptions"""  # noqa: E501
 
         self._width = None
@@ -74,6 +78,8 @@ class WordProcessingConvertOptions(ConvertOptions):
         self._zoom = None
         self._watermark_options = None
         self._pdf_recognition_mode = None
+        self._page_size = None
+        self._page_orientation = None
 
         if width is not None:
             self.width = width
@@ -89,6 +95,10 @@ class WordProcessingConvertOptions(ConvertOptions):
             self.watermark_options = watermark_options
         if pdf_recognition_mode is not None:
             self.pdf_recognition_mode = pdf_recognition_mode
+        if page_size is not None:
+            self.page_size = page_size
+        if page_orientation is not None:
+            self.page_orientation = page_orientation
 
         base = super(WordProcessingConvertOptions, self)
         base.__init__(**kwargs)
@@ -281,6 +291,74 @@ class WordProcessingConvertOptions(ConvertOptions):
             self._pdf_recognition_mode = pdf_recognition_mode
         else:
             self._pdf_recognition_mode = allowed_values[int(pdf_recognition_mode) if six.PY3 else long(pdf_recognition_mode)]
+    
+    @property
+    def page_size(self):
+        """
+        Gets the page_size.  # noqa: E501
+
+        Page size  # noqa: E501
+
+        :return: The page_size.  # noqa: E501
+        :rtype: str
+        """
+        return self._page_size
+
+    @page_size.setter
+    def page_size(self, page_size):
+        """
+        Sets the page_size.
+
+        Page size  # noqa: E501
+
+        :param page_size: The page_size.  # noqa: E501
+        :type: str
+        """
+        if page_size is None:
+            raise ValueError("Invalid value for `page_size`, must not be `None`")  # noqa: E501
+        allowed_values = ["Default", "A3", "Statement", "Quarto", "Paper11x17", "Paper10x14", "Letter", "Legal", "Ledger", "Folio", "Executive", "EnvelopeDL", "Custom", "B5", "B4", "A5", "A4", "Tabloid"]  # noqa: E501
+        if not page_size.isdigit():	
+            if page_size not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `page_size` ({0}), must be one of {1}"  # noqa: E501
+                    .format(page_size, allowed_values))
+            self._page_size = page_size
+        else:
+            self._page_size = allowed_values[int(page_size) if six.PY3 else long(page_size)]
+    
+    @property
+    def page_orientation(self):
+        """
+        Gets the page_orientation.  # noqa: E501
+
+        Specifies page orientation  # noqa: E501
+
+        :return: The page_orientation.  # noqa: E501
+        :rtype: str
+        """
+        return self._page_orientation
+
+    @page_orientation.setter
+    def page_orientation(self, page_orientation):
+        """
+        Sets the page_orientation.
+
+        Specifies page orientation  # noqa: E501
+
+        :param page_orientation: The page_orientation.  # noqa: E501
+        :type: str
+        """
+        if page_orientation is None:
+            raise ValueError("Invalid value for `page_orientation`, must not be `None`")  # noqa: E501
+        allowed_values = ["Default", "Landscape", "Portrait"]  # noqa: E501
+        if not page_orientation.isdigit():	
+            if page_orientation not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `page_orientation` ({0}), must be one of {1}"  # noqa: E501
+                    .format(page_orientation, allowed_values))
+            self._page_orientation = page_orientation
+        else:
+            self._page_orientation = allowed_values[int(page_orientation) if six.PY3 else long(page_orientation)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""
