@@ -74,8 +74,7 @@ class PdfConvertOptions(ConvertOptions):
         'non_full_screen_page_mode': 'str',
         'page_layout': 'str',
         'page_mode': 'str',
-        'rotate': 'str',
-        'watermark_options': 'WatermarkOptions'
+        'rotate': 'str'
     }
 
     attribute_map = {
@@ -108,11 +107,10 @@ class PdfConvertOptions(ConvertOptions):
         'non_full_screen_page_mode': 'NonFullScreenPageMode',
         'page_layout': 'PageLayout',
         'page_mode': 'PageMode',
-        'rotate': 'Rotate',
-        'watermark_options': 'WatermarkOptions'
+        'rotate': 'Rotate'
     }
 
-    def __init__(self, width=None, height=None, dpi=None, password=None, margin_top=None, margin_bottom=None, margin_left=None, margin_right=None, pdf_format=None, remove_pdfa_compliance=None, zoom=None, linearize=None, link_duplicate_streams=None, remove_unused_objects=None, remove_unused_streams=None, compress_images=None, image_quality=None, unembed_fonts=None, grayscale=None, center_window=None, direction=None, display_doc_title=None, fit_window=None, hide_menu_bar=None, hide_tool_bar=None, hide_window_ui=None, non_full_screen_page_mode=None, page_layout=None, page_mode=None, rotate=None, watermark_options=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, dpi=None, password=None, margin_top=None, margin_bottom=None, margin_left=None, margin_right=None, pdf_format=None, remove_pdfa_compliance=None, zoom=None, linearize=None, link_duplicate_streams=None, remove_unused_objects=None, remove_unused_streams=None, compress_images=None, image_quality=None, unembed_fonts=None, grayscale=None, center_window=None, direction=None, display_doc_title=None, fit_window=None, hide_menu_bar=None, hide_tool_bar=None, hide_window_ui=None, non_full_screen_page_mode=None, page_layout=None, page_mode=None, rotate=None, **kwargs):  # noqa: E501
         """Initializes new instance of PdfConvertOptions"""  # noqa: E501
 
         self._width = None
@@ -145,7 +143,6 @@ class PdfConvertOptions(ConvertOptions):
         self._page_layout = None
         self._page_mode = None
         self._rotate = None
-        self._watermark_options = None
 
         if width is not None:
             self.width = width
@@ -207,8 +204,6 @@ class PdfConvertOptions(ConvertOptions):
             self.page_mode = page_mode
         if rotate is not None:
             self.rotate = rotate
-        if watermark_options is not None:
-            self.watermark_options = watermark_options
 
         base = super(PdfConvertOptions, self)
         base.__init__(**kwargs)
@@ -1041,30 +1036,6 @@ class PdfConvertOptions(ConvertOptions):
             self._rotate = rotate
         else:
             self._rotate = allowed_values[int(rotate) if six.PY3 else long(rotate)]
-    
-    @property
-    def watermark_options(self):
-        """
-        Gets the watermark_options.  # noqa: E501
-
-        Watermark specific options  # noqa: E501
-
-        :return: The watermark_options.  # noqa: E501
-        :rtype: WatermarkOptions
-        """
-        return self._watermark_options
-
-    @watermark_options.setter
-    def watermark_options(self, watermark_options):
-        """
-        Sets the watermark_options.
-
-        Watermark specific options  # noqa: E501
-
-        :param watermark_options: The watermark_options.  # noqa: E501
-        :type: WatermarkOptions
-        """
-        self._watermark_options = watermark_options
 
     def to_dict(self):
         """Returns the model properties as a dict"""

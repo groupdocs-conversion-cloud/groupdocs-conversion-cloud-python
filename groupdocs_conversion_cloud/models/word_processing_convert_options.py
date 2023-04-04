@@ -50,7 +50,6 @@ class WordProcessingConvertOptions(ConvertOptions):
         'dpi': 'float',
         'password': 'str',
         'zoom': 'int',
-        'watermark_options': 'WatermarkOptions',
         'pdf_recognition_mode': 'str',
         'page_size': 'str',
         'page_orientation': 'str'
@@ -62,13 +61,12 @@ class WordProcessingConvertOptions(ConvertOptions):
         'dpi': 'Dpi',
         'password': 'Password',
         'zoom': 'Zoom',
-        'watermark_options': 'WatermarkOptions',
         'pdf_recognition_mode': 'PdfRecognitionMode',
         'page_size': 'PageSize',
         'page_orientation': 'PageOrientation'
     }
 
-    def __init__(self, width=None, height=None, dpi=None, password=None, zoom=None, watermark_options=None, pdf_recognition_mode=None, page_size=None, page_orientation=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, dpi=None, password=None, zoom=None, pdf_recognition_mode=None, page_size=None, page_orientation=None, **kwargs):  # noqa: E501
         """Initializes new instance of WordProcessingConvertOptions"""  # noqa: E501
 
         self._width = None
@@ -76,7 +74,6 @@ class WordProcessingConvertOptions(ConvertOptions):
         self._dpi = None
         self._password = None
         self._zoom = None
-        self._watermark_options = None
         self._pdf_recognition_mode = None
         self._page_size = None
         self._page_orientation = None
@@ -91,8 +88,6 @@ class WordProcessingConvertOptions(ConvertOptions):
             self.password = password
         if zoom is not None:
             self.zoom = zoom
-        if watermark_options is not None:
-            self.watermark_options = watermark_options
         if pdf_recognition_mode is not None:
             self.pdf_recognition_mode = pdf_recognition_mode
         if page_size is not None:
@@ -233,30 +228,6 @@ class WordProcessingConvertOptions(ConvertOptions):
         if zoom is None:
             raise ValueError("Invalid value for `zoom`, must not be `None`")  # noqa: E501
         self._zoom = zoom
-    
-    @property
-    def watermark_options(self):
-        """
-        Gets the watermark_options.  # noqa: E501
-
-        Watermark specific options  # noqa: E501
-
-        :return: The watermark_options.  # noqa: E501
-        :rtype: WatermarkOptions
-        """
-        return self._watermark_options
-
-    @watermark_options.setter
-    def watermark_options(self, watermark_options):
-        """
-        Sets the watermark_options.
-
-        Watermark specific options  # noqa: E501
-
-        :param watermark_options: The watermark_options.  # noqa: E501
-        :type: WatermarkOptions
-        """
-        self._watermark_options = watermark_options
     
     @property
     def pdf_recognition_mode(self):

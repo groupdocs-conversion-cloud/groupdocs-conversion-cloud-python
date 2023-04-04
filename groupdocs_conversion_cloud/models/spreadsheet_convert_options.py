@@ -47,24 +47,21 @@ class SpreadsheetConvertOptions(ConvertOptions):
     swagger_types = {
         'password': 'str',
         'zoom': 'int',
-        'use_pdf': 'bool',
-        'watermark_options': 'WatermarkOptions'
+        'use_pdf': 'bool'
     }
 
     attribute_map = {
         'password': 'Password',
         'zoom': 'Zoom',
-        'use_pdf': 'UsePdf',
-        'watermark_options': 'WatermarkOptions'
+        'use_pdf': 'UsePdf'
     }
 
-    def __init__(self, password=None, zoom=None, use_pdf=None, watermark_options=None, **kwargs):  # noqa: E501
+    def __init__(self, password=None, zoom=None, use_pdf=None, **kwargs):  # noqa: E501
         """Initializes new instance of SpreadsheetConvertOptions"""  # noqa: E501
 
         self._password = None
         self._zoom = None
         self._use_pdf = None
-        self._watermark_options = None
 
         if password is not None:
             self.password = password
@@ -72,8 +69,6 @@ class SpreadsheetConvertOptions(ConvertOptions):
             self.zoom = zoom
         if use_pdf is not None:
             self.use_pdf = use_pdf
-        if watermark_options is not None:
-            self.watermark_options = watermark_options
 
         base = super(SpreadsheetConvertOptions, self)
         base.__init__(**kwargs)
@@ -156,30 +151,6 @@ class SpreadsheetConvertOptions(ConvertOptions):
         if use_pdf is None:
             raise ValueError("Invalid value for `use_pdf`, must not be `None`")  # noqa: E501
         self._use_pdf = use_pdf
-    
-    @property
-    def watermark_options(self):
-        """
-        Gets the watermark_options.  # noqa: E501
-
-        Watermark specific options  # noqa: E501
-
-        :return: The watermark_options.  # noqa: E501
-        :rtype: WatermarkOptions
-        """
-        return self._watermark_options
-
-    @watermark_options.setter
-    def watermark_options(self, watermark_options):
-        """
-        Sets the watermark_options.
-
-        Watermark specific options  # noqa: E501
-
-        :param watermark_options: The watermark_options.  # noqa: E501
-        :type: WatermarkOptions
-        """
-        self._watermark_options = watermark_options
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -45,21 +45,24 @@ class ConvertOptions(object):
     swagger_types = {
         'from_page': 'int',
         'pages_count': 'int',
-        'pages': 'list[int]'
+        'pages': 'list[int]',
+        'watermark_options': 'WatermarkOptions'
     }
 
     attribute_map = {
         'from_page': 'FromPage',
         'pages_count': 'PagesCount',
-        'pages': 'Pages'
+        'pages': 'Pages',
+        'watermark_options': 'WatermarkOptions'
     }
 
-    def __init__(self, from_page=None, pages_count=None, pages=None, **kwargs):  # noqa: E501
+    def __init__(self, from_page=None, pages_count=None, pages=None, watermark_options=None, **kwargs):  # noqa: E501
         """Initializes new instance of ConvertOptions"""  # noqa: E501
 
         self._from_page = None
         self._pages_count = None
         self._pages = None
+        self._watermark_options = None
 
         if from_page is not None:
             self.from_page = from_page
@@ -67,6 +70,8 @@ class ConvertOptions(object):
             self.pages_count = pages_count
         if pages is not None:
             self.pages = pages
+        if watermark_options is not None:
+            self.watermark_options = watermark_options
     
     @property
     def from_page(self):
@@ -143,6 +148,30 @@ class ConvertOptions(object):
         :type: list[int]
         """
         self._pages = pages
+    
+    @property
+    def watermark_options(self):
+        """
+        Gets the watermark_options.  # noqa: E501
+
+        Watermark specific options  # noqa: E501
+
+        :return: The watermark_options.  # noqa: E501
+        :rtype: WatermarkOptions
+        """
+        return self._watermark_options
+
+    @watermark_options.setter
+    def watermark_options(self, watermark_options):
+        """
+        Sets the watermark_options.
+
+        Watermark specific options  # noqa: E501
+
+        :param watermark_options: The watermark_options.  # noqa: E501
+        :type: WatermarkOptions
+        """
+        self._watermark_options = watermark_options
 
     def to_dict(self):
         """Returns the model properties as a dict"""

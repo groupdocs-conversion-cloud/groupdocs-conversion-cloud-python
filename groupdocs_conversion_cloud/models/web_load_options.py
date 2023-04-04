@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="EpubConvertOptions.py">
+# <copyright company="Aspose Pty Ltd" file="WebLoadOptions.py">
 #   Copyright (c) 2003-2023 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,11 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_conversion_cloud.models import XpsConvertOptions
+from groupdocs_conversion_cloud.models import LoadOptions
 
-class EpubConvertOptions(XpsConvertOptions):
+class WebLoadOptions(LoadOptions):
     """
-    Epub convert options
+    Html document load options
     """
 
     """
@@ -45,19 +45,52 @@ class EpubConvertOptions(XpsConvertOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'page_numbering': 'bool'
     }
 
     attribute_map = {
+        'page_numbering': 'PageNumbering'
     }
 
-    def __init__(self, **kwargs):  # noqa: E501
-        """Initializes new instance of EpubConvertOptions"""  # noqa: E501
+    def __init__(self, page_numbering=None, **kwargs):  # noqa: E501
+        """Initializes new instance of WebLoadOptions"""  # noqa: E501
 
-        base = super(EpubConvertOptions, self)
+        self._page_numbering = None
+
+        if page_numbering is not None:
+            self.page_numbering = page_numbering
+
+        base = super(WebLoadOptions, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
+    
+    @property
+    def page_numbering(self):
+        """
+        Gets the page_numbering.  # noqa: E501
+
+        Enable or disable generation of page numbering in converted document. Default: false  # noqa: E501
+
+        :return: The page_numbering.  # noqa: E501
+        :rtype: bool
+        """
+        return self._page_numbering
+
+    @page_numbering.setter
+    def page_numbering(self, page_numbering):
+        """
+        Sets the page_numbering.
+
+        Enable or disable generation of page numbering in converted document. Default: false  # noqa: E501
+
+        :param page_numbering: The page_numbering.  # noqa: E501
+        :type: bool
+        """
+        if page_numbering is None:
+            raise ValueError("Invalid value for `page_numbering`, must not be `None`")  # noqa: E501
+        self._page_numbering = page_numbering
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -93,7 +126,7 @@ class EpubConvertOptions(XpsConvertOptions):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, EpubConvertOptions):
+        if not isinstance(other, WebLoadOptions):
             return False
 
         return self.__dict__ == other.__dict__

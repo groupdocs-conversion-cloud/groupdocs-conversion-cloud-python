@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="CgmConvertOptions.py">
+# <copyright company="Aspose Pty Ltd" file="PDLConvertOptions.py">
 #   Copyright (c) 2003-2023 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,11 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_conversion_cloud.models import ImageConvertOptions
+from groupdocs_conversion_cloud.models import ConvertOptions
 
-class CgmConvertOptions(ImageConvertOptions):
+class PDLConvertOptions(ConvertOptions):
     """
-    Cgm convert options
+    Page description langusge convert options
     """
 
     """
@@ -51,9 +51,9 @@ class CgmConvertOptions(ImageConvertOptions):
     }
 
     def __init__(self, **kwargs):  # noqa: E501
-        """Initializes new instance of CgmConvertOptions"""  # noqa: E501
+        """Initializes new instance of PDLConvertOptions"""  # noqa: E501
 
-        base = super(CgmConvertOptions, self)
+        base = super(PDLConvertOptions, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
@@ -93,7 +93,7 @@ class CgmConvertOptions(ImageConvertOptions):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, CgmConvertOptions):
+        if not isinstance(other, PDLConvertOptions):
             return False
 
         return self.__dict__ == other.__dict__

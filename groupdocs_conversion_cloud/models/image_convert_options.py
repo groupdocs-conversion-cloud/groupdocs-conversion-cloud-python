@@ -52,7 +52,6 @@ class ImageConvertOptions(ConvertOptions):
         'grayscale': 'bool',
         'rotate_angle': 'int',
         'use_pdf': 'bool',
-        'watermark_options': 'WatermarkOptions',
         'brightness': 'int',
         'contrast': 'int',
         'gamma': 'float',
@@ -67,14 +66,13 @@ class ImageConvertOptions(ConvertOptions):
         'grayscale': 'Grayscale',
         'rotate_angle': 'RotateAngle',
         'use_pdf': 'UsePdf',
-        'watermark_options': 'WatermarkOptions',
         'brightness': 'Brightness',
         'contrast': 'Contrast',
         'gamma': 'Gamma',
         'flip_mode': 'FlipMode'
     }
 
-    def __init__(self, width=None, height=None, horizontal_resolution=None, vertical_resolution=None, grayscale=None, rotate_angle=None, use_pdf=None, watermark_options=None, brightness=None, contrast=None, gamma=None, flip_mode=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, horizontal_resolution=None, vertical_resolution=None, grayscale=None, rotate_angle=None, use_pdf=None, brightness=None, contrast=None, gamma=None, flip_mode=None, **kwargs):  # noqa: E501
         """Initializes new instance of ImageConvertOptions"""  # noqa: E501
 
         self._width = None
@@ -84,7 +82,6 @@ class ImageConvertOptions(ConvertOptions):
         self._grayscale = None
         self._rotate_angle = None
         self._use_pdf = None
-        self._watermark_options = None
         self._brightness = None
         self._contrast = None
         self._gamma = None
@@ -104,8 +101,6 @@ class ImageConvertOptions(ConvertOptions):
             self.rotate_angle = rotate_angle
         if use_pdf is not None:
             self.use_pdf = use_pdf
-        if watermark_options is not None:
-            self.watermark_options = watermark_options
         if brightness is not None:
             self.brightness = brightness
         if contrast is not None:
@@ -302,30 +297,6 @@ class ImageConvertOptions(ConvertOptions):
         if use_pdf is None:
             raise ValueError("Invalid value for `use_pdf`, must not be `None`")  # noqa: E501
         self._use_pdf = use_pdf
-    
-    @property
-    def watermark_options(self):
-        """
-        Gets the watermark_options.  # noqa: E501
-
-        Watermark specific options  # noqa: E501
-
-        :return: The watermark_options.  # noqa: E501
-        :rtype: WatermarkOptions
-        """
-        return self._watermark_options
-
-    @watermark_options.setter
-    def watermark_options(self, watermark_options):
-        """
-        Sets the watermark_options.
-
-        Watermark specific options  # noqa: E501
-
-        :param watermark_options: The watermark_options.  # noqa: E501
-        :type: WatermarkOptions
-        """
-        self._watermark_options = watermark_options
     
     @property
     def brightness(self):

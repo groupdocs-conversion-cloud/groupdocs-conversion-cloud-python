@@ -46,29 +46,24 @@ class PresentationConvertOptions(ConvertOptions):
     """
     swagger_types = {
         'password': 'str',
-        'zoom': 'int',
-        'watermark_options': 'WatermarkOptions'
+        'zoom': 'int'
     }
 
     attribute_map = {
         'password': 'Password',
-        'zoom': 'Zoom',
-        'watermark_options': 'WatermarkOptions'
+        'zoom': 'Zoom'
     }
 
-    def __init__(self, password=None, zoom=None, watermark_options=None, **kwargs):  # noqa: E501
+    def __init__(self, password=None, zoom=None, **kwargs):  # noqa: E501
         """Initializes new instance of PresentationConvertOptions"""  # noqa: E501
 
         self._password = None
         self._zoom = None
-        self._watermark_options = None
 
         if password is not None:
             self.password = password
         if zoom is not None:
             self.zoom = zoom
-        if watermark_options is not None:
-            self.watermark_options = watermark_options
 
         base = super(PresentationConvertOptions, self)
         base.__init__(**kwargs)
@@ -125,30 +120,6 @@ class PresentationConvertOptions(ConvertOptions):
         if zoom is None:
             raise ValueError("Invalid value for `zoom`, must not be `None`")  # noqa: E501
         self._zoom = zoom
-    
-    @property
-    def watermark_options(self):
-        """
-        Gets the watermark_options.  # noqa: E501
-
-        Watermark specific options  # noqa: E501
-
-        :return: The watermark_options.  # noqa: E501
-        :rtype: WatermarkOptions
-        """
-        return self._watermark_options
-
-    @watermark_options.setter
-    def watermark_options(self, watermark_options):
-        """
-        Sets the watermark_options.
-
-        Watermark specific options  # noqa: E501
-
-        :param watermark_options: The watermark_options.  # noqa: E501
-        :type: WatermarkOptions
-        """
-        self._watermark_options = watermark_options
 
     def to_dict(self):
         """Returns the model properties as a dict"""

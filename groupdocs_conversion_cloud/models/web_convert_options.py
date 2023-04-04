@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="HtmlConvertOptions.py">
+# <copyright company="Aspose Pty Ltd" file="WebConvertOptions.py">
 #   Copyright (c) 2003-2023 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -32,7 +32,7 @@ import six
 
 from groupdocs_conversion_cloud.models import ConvertOptions
 
-class HtmlConvertOptions(ConvertOptions):
+class WebConvertOptions(ConvertOptions):
     """
     Options for to Html conversion
     """
@@ -48,26 +48,23 @@ class HtmlConvertOptions(ConvertOptions):
         'use_pdf': 'bool',
         'fixed_layout': 'bool',
         'fixed_layout_show_borders': 'bool',
-        'zoom': 'int',
-        'watermark_options': 'WatermarkOptions'
+        'zoom': 'int'
     }
 
     attribute_map = {
         'use_pdf': 'UsePdf',
         'fixed_layout': 'FixedLayout',
         'fixed_layout_show_borders': 'FixedLayoutShowBorders',
-        'zoom': 'Zoom',
-        'watermark_options': 'WatermarkOptions'
+        'zoom': 'Zoom'
     }
 
-    def __init__(self, use_pdf=None, fixed_layout=None, fixed_layout_show_borders=None, zoom=None, watermark_options=None, **kwargs):  # noqa: E501
-        """Initializes new instance of HtmlConvertOptions"""  # noqa: E501
+    def __init__(self, use_pdf=None, fixed_layout=None, fixed_layout_show_borders=None, zoom=None, **kwargs):  # noqa: E501
+        """Initializes new instance of WebConvertOptions"""  # noqa: E501
 
         self._use_pdf = None
         self._fixed_layout = None
         self._fixed_layout_show_borders = None
         self._zoom = None
-        self._watermark_options = None
 
         if use_pdf is not None:
             self.use_pdf = use_pdf
@@ -77,10 +74,8 @@ class HtmlConvertOptions(ConvertOptions):
             self.fixed_layout_show_borders = fixed_layout_show_borders
         if zoom is not None:
             self.zoom = zoom
-        if watermark_options is not None:
-            self.watermark_options = watermark_options
 
-        base = super(HtmlConvertOptions, self)
+        base = super(WebConvertOptions, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
@@ -189,30 +184,6 @@ class HtmlConvertOptions(ConvertOptions):
         if zoom is None:
             raise ValueError("Invalid value for `zoom`, must not be `None`")  # noqa: E501
         self._zoom = zoom
-    
-    @property
-    def watermark_options(self):
-        """
-        Gets the watermark_options.  # noqa: E501
-
-        Watermark specific options  # noqa: E501
-
-        :return: The watermark_options.  # noqa: E501
-        :rtype: WatermarkOptions
-        """
-        return self._watermark_options
-
-    @watermark_options.setter
-    def watermark_options(self, watermark_options):
-        """
-        Sets the watermark_options.
-
-        Watermark specific options  # noqa: E501
-
-        :param watermark_options: The watermark_options.  # noqa: E501
-        :type: WatermarkOptions
-        """
-        self._watermark_options = watermark_options
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -248,7 +219,7 @@ class HtmlConvertOptions(ConvertOptions):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, HtmlConvertOptions):
+        if not isinstance(other, WebConvertOptions):
             return False
 
         return self.__dict__ == other.__dict__
