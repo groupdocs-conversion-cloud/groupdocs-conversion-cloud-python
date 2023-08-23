@@ -26,6 +26,8 @@ from groupdocs_conversion_cloud.api_client import ApiClient
 from groupdocs_conversion_cloud.configuration import Configuration
 
 # import models
+from groupdocs_conversion_cloud.models.api_error import ApiError
+from groupdocs_conversion_cloud.models.api_error_response import ApiErrorResponse
 from groupdocs_conversion_cloud.models.consumption_result import ConsumptionResult
 from groupdocs_conversion_cloud.models.convert_options import ConvertOptions
 from groupdocs_conversion_cloud.models.convert_settings import ConvertSettings
@@ -196,4 +198,5 @@ from groupdocs_conversion_cloud.models.jpf_convert_options import JpfConvertOpti
 from groupdocs_conversion_cloud.models.jpm_convert_options import JpmConvertOptions
 from groupdocs_conversion_cloud.models.jpx_convert_options import JpxConvertOptions
 from groupdocs_conversion_cloud.models.tif_convert_options import TifConvertOptions
+
 

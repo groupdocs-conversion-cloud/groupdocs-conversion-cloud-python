@@ -4,6 +4,8 @@
 from __future__ import absolute_import
 
 # import models
+from groupdocs_conversion_cloud.models.api_error import ApiError
+from groupdocs_conversion_cloud.models.api_error_response import ApiErrorResponse
 from groupdocs_conversion_cloud.models.consumption_result import ConsumptionResult
 from groupdocs_conversion_cloud.models.convert_options import ConvertOptions
 from groupdocs_conversion_cloud.models.convert_settings import ConvertSettings
