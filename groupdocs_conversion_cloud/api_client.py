@@ -74,12 +74,12 @@ class ApiClient(object):
         self.configuration = configuration
         self.pool = None
         self.rest_client = rest.RESTClientObject(configuration)
-        self.default_headers = {'x-groupdocs-client': 'python sdk', 'x-groupdocs-version': '23.8'}
+        self.default_headers = {'x-groupdocs-client': 'python sdk', 'x-groupdocs-version': '23.9'}
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'python sdk 23.8'
+        self.user_agent = 'python sdk 23.9'
 
     def __del__(self):
         if self.pool is not None:
@@ -535,7 +535,7 @@ class ApiClient(object):
             filename = re.search(r'filename=[\'"]?([^\'"\s]+)[\'"]?',
                                  content_disposition).group(1)
             filename = filename.replace('/', '_')
-            path = os.path.join(os.path.dirname(path), filename)
+            path = os.path.join(os.path.dirname(path), os.path.basename(filename))
 
         with open(path, "wb") as f:
             f.write(response.data)
