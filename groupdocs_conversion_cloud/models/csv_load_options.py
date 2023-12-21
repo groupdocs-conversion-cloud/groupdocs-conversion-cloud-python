@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_conversion_cloud.models import LoadOptions
+from groupdocs_conversion_cloud.models import SpreadsheetLoadOptions
 
-class CsvLoadOptions(LoadOptions):
+class CsvLoadOptions(SpreadsheetLoadOptions):
     """
     Csv document load options
     """
