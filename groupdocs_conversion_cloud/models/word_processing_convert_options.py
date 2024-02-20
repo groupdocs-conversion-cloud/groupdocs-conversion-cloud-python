@@ -47,7 +47,7 @@ class WordProcessingConvertOptions(ConvertOptions):
     swagger_types = {
         'width': 'int',
         'height': 'int',
-        'dpi': 'float',
+        'dpi': 'int',
         'password': 'str',
         'zoom': 'int',
         'pdf_recognition_mode': 'str',
@@ -161,7 +161,7 @@ class WordProcessingConvertOptions(ConvertOptions):
         Desired page DPI after conversion. The default resolution is: 96dpi  # noqa: E501
 
         :return: The dpi.  # noqa: E501
-        :rtype: float
+        :rtype: int
         """
         return self._dpi
 
@@ -173,7 +173,7 @@ class WordProcessingConvertOptions(ConvertOptions):
         Desired page DPI after conversion. The default resolution is: 96dpi  # noqa: E501
 
         :param dpi: The dpi.  # noqa: E501
-        :type: float
+        :type: int
         """
         if dpi is None:
             raise ValueError("Invalid value for `dpi`, must not be `None`")  # noqa: E501

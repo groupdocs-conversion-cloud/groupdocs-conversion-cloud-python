@@ -47,7 +47,7 @@ class PdfConvertOptions(ConvertOptions):
     swagger_types = {
         'width': 'int',
         'height': 'int',
-        'dpi': 'float',
+        'dpi': 'int',
         'password': 'str',
         'margin_top': 'int',
         'margin_bottom': 'int',
@@ -74,7 +74,9 @@ class PdfConvertOptions(ConvertOptions):
         'non_full_screen_page_mode': 'str',
         'page_layout': 'str',
         'page_mode': 'str',
-        'rotate': 'str'
+        'rotate': 'str',
+        'page_size': 'str',
+        'page_orientation': 'str'
     }
 
     attribute_map = {
@@ -107,10 +109,12 @@ class PdfConvertOptions(ConvertOptions):
         'non_full_screen_page_mode': 'NonFullScreenPageMode',
         'page_layout': 'PageLayout',
         'page_mode': 'PageMode',
-        'rotate': 'Rotate'
+        'rotate': 'Rotate',
+        'page_size': 'PageSize',
+        'page_orientation': 'PageOrientation'
     }
 
-    def __init__(self, width=None, height=None, dpi=None, password=None, margin_top=None, margin_bottom=None, margin_left=None, margin_right=None, pdf_format=None, remove_pdfa_compliance=None, zoom=None, linearize=None, link_duplicate_streams=None, remove_unused_objects=None, remove_unused_streams=None, compress_images=None, image_quality=None, unembed_fonts=None, grayscale=None, center_window=None, direction=None, display_doc_title=None, fit_window=None, hide_menu_bar=None, hide_tool_bar=None, hide_window_ui=None, non_full_screen_page_mode=None, page_layout=None, page_mode=None, rotate=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, dpi=None, password=None, margin_top=None, margin_bottom=None, margin_left=None, margin_right=None, pdf_format=None, remove_pdfa_compliance=None, zoom=None, linearize=None, link_duplicate_streams=None, remove_unused_objects=None, remove_unused_streams=None, compress_images=None, image_quality=None, unembed_fonts=None, grayscale=None, center_window=None, direction=None, display_doc_title=None, fit_window=None, hide_menu_bar=None, hide_tool_bar=None, hide_window_ui=None, non_full_screen_page_mode=None, page_layout=None, page_mode=None, rotate=None, page_size=None, page_orientation=None, **kwargs):  # noqa: E501
         """Initializes new instance of PdfConvertOptions"""  # noqa: E501
 
         self._width = None
@@ -143,6 +147,8 @@ class PdfConvertOptions(ConvertOptions):
         self._page_layout = None
         self._page_mode = None
         self._rotate = None
+        self._page_size = None
+        self._page_orientation = None
 
         if width is not None:
             self.width = width
@@ -204,6 +210,10 @@ class PdfConvertOptions(ConvertOptions):
             self.page_mode = page_mode
         if rotate is not None:
             self.rotate = rotate
+        if page_size is not None:
+            self.page_size = page_size
+        if page_orientation is not None:
+            self.page_orientation = page_orientation
 
         base = super(PdfConvertOptions, self)
         base.__init__(**kwargs)
@@ -271,7 +281,7 @@ class PdfConvertOptions(ConvertOptions):
         Desired page DPI after conversion. The default resolution is: 96dpi  # noqa: E501
 
         :return: The dpi.  # noqa: E501
-        :rtype: float
+        :rtype: int
         """
         return self._dpi
 
@@ -283,7 +293,7 @@ class PdfConvertOptions(ConvertOptions):
         Desired page DPI after conversion. The default resolution is: 96dpi  # noqa: E501
 
         :param dpi: The dpi.  # noqa: E501
-        :type: float
+        :type: int
         """
         if dpi is None:
             raise ValueError("Invalid value for `dpi`, must not be `None`")  # noqa: E501
@@ -1036,6 +1046,74 @@ class PdfConvertOptions(ConvertOptions):
             self._rotate = rotate
         else:
             self._rotate = allowed_values[int(rotate) if six.PY3 else long(rotate)]
+    
+    @property
+    def page_size(self):
+        """
+        Gets the page_size.  # noqa: E501
+
+        Specifies page size  # noqa: E501
+
+        :return: The page_size.  # noqa: E501
+        :rtype: str
+        """
+        return self._page_size
+
+    @page_size.setter
+    def page_size(self, page_size):
+        """
+        Sets the page_size.
+
+        Specifies page size  # noqa: E501
+
+        :param page_size: The page_size.  # noqa: E501
+        :type: str
+        """
+        if page_size is None:
+            raise ValueError("Invalid value for `page_size`, must not be `None`")  # noqa: E501
+        allowed_values = ["Default", "A3", "Statement", "Quarto", "Paper11x17", "Paper10x14", "Letter", "Legal", "Ledger", "Folio", "Executive", "EnvelopeDL", "Custom", "B5", "B4", "A5", "A4", "Tabloid"]  # noqa: E501
+        if not page_size.isdigit():	
+            if page_size not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `page_size` ({0}), must be one of {1}"  # noqa: E501
+                    .format(page_size, allowed_values))
+            self._page_size = page_size
+        else:
+            self._page_size = allowed_values[int(page_size) if six.PY3 else long(page_size)]
+    
+    @property
+    def page_orientation(self):
+        """
+        Gets the page_orientation.  # noqa: E501
+
+        Specifies page orientation  # noqa: E501
+
+        :return: The page_orientation.  # noqa: E501
+        :rtype: str
+        """
+        return self._page_orientation
+
+    @page_orientation.setter
+    def page_orientation(self, page_orientation):
+        """
+        Sets the page_orientation.
+
+        Specifies page orientation  # noqa: E501
+
+        :param page_orientation: The page_orientation.  # noqa: E501
+        :type: str
+        """
+        if page_orientation is None:
+            raise ValueError("Invalid value for `page_orientation`, must not be `None`")  # noqa: E501
+        allowed_values = ["Default", "Landscape", "Portrait"]  # noqa: E501
+        if not page_orientation.isdigit():	
+            if page_orientation not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `page_orientation` ({0}), must be one of {1}"  # noqa: E501
+                    .format(page_orientation, allowed_values))
+            self._page_orientation = page_orientation
+        else:
+            self._page_orientation = allowed_values[int(page_orientation) if six.PY3 else long(page_orientation)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""
