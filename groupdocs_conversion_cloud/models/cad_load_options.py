@@ -45,88 +45,36 @@ class CadLoadOptions(LoadOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'width': 'int',
-        'height': 'int',
-        'layout_names': 'list[str]'
+        'layout_names': 'list[str]',
+        'background_color': 'str',
+        'draw_type': 'str'
     }
 
     attribute_map = {
-        'width': 'Width',
-        'height': 'Height',
-        'layout_names': 'LayoutNames'
+        'layout_names': 'LayoutNames',
+        'background_color': 'BackgroundColor',
+        'draw_type': 'DrawType'
     }
 
-    def __init__(self, width=None, height=None, layout_names=None, **kwargs):  # noqa: E501
+    def __init__(self, layout_names=None, background_color=None, draw_type=None, **kwargs):  # noqa: E501
         """Initializes new instance of CadLoadOptions"""  # noqa: E501
 
-        self._width = None
-        self._height = None
         self._layout_names = None
+        self._background_color = None
+        self._draw_type = None
 
-        if width is not None:
-            self.width = width
-        if height is not None:
-            self.height = height
         if layout_names is not None:
             self.layout_names = layout_names
+        if background_color is not None:
+            self.background_color = background_color
+        if draw_type is not None:
+            self.draw_type = draw_type
 
         base = super(CadLoadOptions, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
-    
-    @property
-    def width(self):
-        """
-        Gets the width.  # noqa: E501
-
-        Set desired page width for converting CAD document  # noqa: E501
-
-        :return: The width.  # noqa: E501
-        :rtype: int
-        """
-        return self._width
-
-    @width.setter
-    def width(self, width):
-        """
-        Sets the width.
-
-        Set desired page width for converting CAD document  # noqa: E501
-
-        :param width: The width.  # noqa: E501
-        :type: int
-        """
-        if width is None:
-            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
-        self._width = width
-    
-    @property
-    def height(self):
-        """
-        Gets the height.  # noqa: E501
-
-        Set desired page height for converting CAD document  # noqa: E501
-
-        :return: The height.  # noqa: E501
-        :rtype: int
-        """
-        return self._height
-
-    @height.setter
-    def height(self, height):
-        """
-        Sets the height.
-
-        Set desired page height for converting CAD document  # noqa: E501
-
-        :param height: The height.  # noqa: E501
-        :type: int
-        """
-        if height is None:
-            raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
-        self._height = height
     
     @property
     def layout_names(self):
@@ -151,6 +99,64 @@ class CadLoadOptions(LoadOptions):
         :type: list[str]
         """
         self._layout_names = layout_names
+    
+    @property
+    def background_color(self):
+        """
+        Gets the background_color.  # noqa: E501
+
+        Gets or sets a background color.  # noqa: E501
+
+        :return: The background_color.  # noqa: E501
+        :rtype: str
+        """
+        return self._background_color
+
+    @background_color.setter
+    def background_color(self, background_color):
+        """
+        Sets the background_color.
+
+        Gets or sets a background color.  # noqa: E501
+
+        :param background_color: The background_color.  # noqa: E501
+        :type: str
+        """
+        self._background_color = background_color
+    
+    @property
+    def draw_type(self):
+        """
+        Gets the draw_type.  # noqa: E501
+
+        Gets or sets type of drawing.  # noqa: E501
+
+        :return: The draw_type.  # noqa: E501
+        :rtype: str
+        """
+        return self._draw_type
+
+    @draw_type.setter
+    def draw_type(self, draw_type):
+        """
+        Sets the draw_type.
+
+        Gets or sets type of drawing.  # noqa: E501
+
+        :param draw_type: The draw_type.  # noqa: E501
+        :type: str
+        """
+        if draw_type is None:
+            raise ValueError("Invalid value for `draw_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["UseDrawColor", "UseObjectColor"]  # noqa: E501
+        if not draw_type.isdigit():	
+            if draw_type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `draw_type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(draw_type, allowed_values))
+            self._draw_type = draw_type
+        else:
+            self._draw_type = allowed_values[int(draw_type) if six.PY3 else long(draw_type)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""
