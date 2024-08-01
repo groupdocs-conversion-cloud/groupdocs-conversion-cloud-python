@@ -5,6 +5,7 @@
 from __future__ import absolute_import
 
 # import apis
+from groupdocs_conversion_cloud.apis.async_api import AsyncApi
 from groupdocs_conversion_cloud.apis.convert_api import ConvertApi
 from groupdocs_conversion_cloud.apis.file_api import FileApi
 from groupdocs_conversion_cloud.apis.folder_api import FolderApi
@@ -18,6 +19,7 @@ from groupdocs_conversion_cloud.apis.storage_api import GetDiscUsageRequest, Get
 from groupdocs_conversion_cloud.apis.folder_api import CopyFolderRequest, CreateFolderRequest, DeleteFolderRequest, GetFilesListRequest, MoveFolderRequest
 from groupdocs_conversion_cloud.apis.convert_api import ConvertDocumentRequest, ConvertDocumentDirectRequest
 from groupdocs_conversion_cloud.apis.info_api import GetSupportedConversionTypesRequest, GetDocumentMetadataRequest
+from groupdocs_conversion_cloud.apis.async_api import GetOperationResultRequest, GetOperationStatusRequest, StartConvertRequest, StartConvertAndSaveRequest
 
 # import related types
 from groupdocs_conversion_cloud.auth import Auth
@@ -42,6 +44,7 @@ from groupdocs_conversion_cloud.models.files_upload_result import FilesUploadRes
 from groupdocs_conversion_cloud.models.license_info import LicenseInfo
 from groupdocs_conversion_cloud.models.load_options import LoadOptions
 from groupdocs_conversion_cloud.models.object_exist import ObjectExist
+from groupdocs_conversion_cloud.models.operation_result import OperationResult
 from groupdocs_conversion_cloud.models.storage_exist import StorageExist
 from groupdocs_conversion_cloud.models.storage_file import StorageFile
 from groupdocs_conversion_cloud.models.stored_converted_result import StoredConvertedResult

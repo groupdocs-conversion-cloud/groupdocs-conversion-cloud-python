@@ -20,6 +20,7 @@ from groupdocs_conversion_cloud.models.files_upload_result import FilesUploadRes
 from groupdocs_conversion_cloud.models.license_info import LicenseInfo
 from groupdocs_conversion_cloud.models.load_options import LoadOptions
 from groupdocs_conversion_cloud.models.object_exist import ObjectExist
+from groupdocs_conversion_cloud.models.operation_result import OperationResult
 from groupdocs_conversion_cloud.models.storage_exist import StorageExist
 from groupdocs_conversion_cloud.models.storage_file import StorageFile
 from groupdocs_conversion_cloud.models.stored_converted_result import StoredConvertedResult

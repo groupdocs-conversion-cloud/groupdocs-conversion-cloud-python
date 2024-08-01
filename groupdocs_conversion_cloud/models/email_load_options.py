@@ -47,7 +47,6 @@ class EmailLoadOptions(LoadOptions):
     swagger_types = {
         'display_header': 'bool',
         'display_from_email_address': 'bool',
-        'display_email_address': 'bool',
         'display_to_email_address': 'bool',
         'display_cc_email_address': 'bool',
         'display_bcc_email_address': 'bool',
@@ -60,7 +59,6 @@ class EmailLoadOptions(LoadOptions):
     attribute_map = {
         'display_header': 'DisplayHeader',
         'display_from_email_address': 'DisplayFromEmailAddress',
-        'display_email_address': 'DisplayEmailAddress',
         'display_to_email_address': 'DisplayToEmailAddress',
         'display_cc_email_address': 'DisplayCcEmailAddress',
         'display_bcc_email_address': 'DisplayBccEmailAddress',
@@ -70,12 +68,11 @@ class EmailLoadOptions(LoadOptions):
         'preserve_original_date': 'PreserveOriginalDate'
     }
 
-    def __init__(self, display_header=None, display_from_email_address=None, display_email_address=None, display_to_email_address=None, display_cc_email_address=None, display_bcc_email_address=None, time_zone_offset=None, convert_attachments=None, field_labels=None, preserve_original_date=None, **kwargs):  # noqa: E501
+    def __init__(self, display_header=None, display_from_email_address=None, display_to_email_address=None, display_cc_email_address=None, display_bcc_email_address=None, time_zone_offset=None, convert_attachments=None, field_labels=None, preserve_original_date=None, **kwargs):  # noqa: E501
         """Initializes new instance of EmailLoadOptions"""  # noqa: E501
 
         self._display_header = None
         self._display_from_email_address = None
-        self._display_email_address = None
         self._display_to_email_address = None
         self._display_cc_email_address = None
         self._display_bcc_email_address = None
@@ -88,8 +85,6 @@ class EmailLoadOptions(LoadOptions):
             self.display_header = display_header
         if display_from_email_address is not None:
             self.display_from_email_address = display_from_email_address
-        if display_email_address is not None:
-            self.display_email_address = display_email_address
         if display_to_email_address is not None:
             self.display_to_email_address = display_to_email_address
         if display_cc_email_address is not None:
@@ -162,32 +157,6 @@ class EmailLoadOptions(LoadOptions):
         if display_from_email_address is None:
             raise ValueError("Invalid value for `display_from_email_address`, must not be `None`")  # noqa: E501
         self._display_from_email_address = display_from_email_address
-    
-    @property
-    def display_email_address(self):
-        """
-        Gets the display_email_address.  # noqa: E501
-
-        Option to display or hide email address. Default: true  # noqa: E501
-
-        :return: The display_email_address.  # noqa: E501
-        :rtype: bool
-        """
-        return self._display_email_address
-
-    @display_email_address.setter
-    def display_email_address(self, display_email_address):
-        """
-        Sets the display_email_address.
-
-        Option to display or hide email address. Default: true  # noqa: E501
-
-        :param display_email_address: The display_email_address.  # noqa: E501
-        :type: bool
-        """
-        if display_email_address is None:
-            raise ValueError("Invalid value for `display_email_address`, must not be `None`")  # noqa: E501
-        self._display_email_address = display_email_address
     
     @property
     def display_to_email_address(self):

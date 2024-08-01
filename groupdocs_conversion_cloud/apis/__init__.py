@@ -3,6 +3,7 @@ from __future__ import absolute_import
 # flake8: noqa
 
 # import apis
+from groupdocs_conversion_cloud.apis.async_api import AsyncApi
 from groupdocs_conversion_cloud.apis.convert_api import ConvertApi
 from groupdocs_conversion_cloud.apis.file_api import FileApi
 from groupdocs_conversion_cloud.apis.folder_api import FolderApi
