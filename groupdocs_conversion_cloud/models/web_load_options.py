@@ -45,20 +45,35 @@ class WebLoadOptions(LoadOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'page_numbering': 'bool'
+        'page_numbering': 'bool',
+        'encoding': 'str',
+        'use_pdf': 'bool',
+        'rendering_mode': 'str'
     }
 
     attribute_map = {
-        'page_numbering': 'PageNumbering'
+        'page_numbering': 'PageNumbering',
+        'encoding': 'Encoding',
+        'use_pdf': 'UsePdf',
+        'rendering_mode': 'RenderingMode'
     }
 
-    def __init__(self, page_numbering=None, **kwargs):  # noqa: E501
+    def __init__(self, page_numbering=None, encoding=None, use_pdf=None, rendering_mode=None, **kwargs):  # noqa: E501
         """Initializes new instance of WebLoadOptions"""  # noqa: E501
 
         self._page_numbering = None
+        self._encoding = None
+        self._use_pdf = None
+        self._rendering_mode = None
 
         if page_numbering is not None:
             self.page_numbering = page_numbering
+        if encoding is not None:
+            self.encoding = encoding
+        if use_pdf is not None:
+            self.use_pdf = use_pdf
+        if rendering_mode is not None:
+            self.rendering_mode = rendering_mode
 
         base = super(WebLoadOptions, self)
         base.__init__(**kwargs)
@@ -91,6 +106,90 @@ class WebLoadOptions(LoadOptions):
         if page_numbering is None:
             raise ValueError("Invalid value for `page_numbering`, must not be `None`")  # noqa: E501
         self._page_numbering = page_numbering
+    
+    @property
+    def encoding(self):
+        """
+        Gets the encoding.  # noqa: E501
+
+        Get or sets the encoding to be used when loading the web document. If the property is null the encoding will be determined from document character set attribute  # noqa: E501
+
+        :return: The encoding.  # noqa: E501
+        :rtype: str
+        """
+        return self._encoding
+
+    @encoding.setter
+    def encoding(self, encoding):
+        """
+        Sets the encoding.
+
+        Get or sets the encoding to be used when loading the web document. If the property is null the encoding will be determined from document character set attribute  # noqa: E501
+
+        :param encoding: The encoding.  # noqa: E501
+        :type: str
+        """
+        self._encoding = encoding
+    
+    @property
+    def use_pdf(self):
+        """
+        Gets the use_pdf.  # noqa: E501
+
+        Use pdf for the conversion. Default: false  # noqa: E501
+
+        :return: The use_pdf.  # noqa: E501
+        :rtype: bool
+        """
+        return self._use_pdf
+
+    @use_pdf.setter
+    def use_pdf(self, use_pdf):
+        """
+        Sets the use_pdf.
+
+        Use pdf for the conversion. Default: false  # noqa: E501
+
+        :param use_pdf: The use_pdf.  # noqa: E501
+        :type: bool
+        """
+        if use_pdf is None:
+            raise ValueError("Invalid value for `use_pdf`, must not be `None`")  # noqa: E501
+        self._use_pdf = use_pdf
+    
+    @property
+    def rendering_mode(self):
+        """
+        Gets the rendering_mode.  # noqa: E501
+
+        Controls how HTML content is rendered. Default: AbsolutePositioning  # noqa: E501
+
+        :return: The rendering_mode.  # noqa: E501
+        :rtype: str
+        """
+        return self._rendering_mode
+
+    @rendering_mode.setter
+    def rendering_mode(self, rendering_mode):
+        """
+        Sets the rendering_mode.
+
+        Controls how HTML content is rendered. Default: AbsolutePositioning  # noqa: E501
+
+        :param rendering_mode: The rendering_mode.  # noqa: E501
+        :type: str
+        """
+        if rendering_mode is None:
+            raise ValueError("Invalid value for `rendering_mode`, must not be `None`")  # noqa: E501
+        allowed_values = ["Flow", "AbsolutePositioning"]  # noqa: E501
+        if not rendering_mode.isdigit():	
+            if rendering_mode not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `rendering_mode` ({0}), must be one of {1}"  # noqa: E501
+                    .format(rendering_mode, allowed_values))
+            self._rendering_mode = rendering_mode
+        else:
+            self._rendering_mode = allowed_values[int(rendering_mode) if six.PY3 else long(rendering_mode)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""
