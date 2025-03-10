@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="ImageConvertOptions.py">
-#   Copyright (c) 2003-2024 Aspose Pty Ltd
+#   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -55,7 +55,8 @@ class ImageConvertOptions(ConvertOptions):
         'brightness': 'int',
         'contrast': 'int',
         'gamma': 'float',
-        'flip_mode': 'str'
+        'flip_mode': 'str',
+        'background_color': 'str'
     }
 
     attribute_map = {
@@ -69,10 +70,11 @@ class ImageConvertOptions(ConvertOptions):
         'brightness': 'Brightness',
         'contrast': 'Contrast',
         'gamma': 'Gamma',
-        'flip_mode': 'FlipMode'
+        'flip_mode': 'FlipMode',
+        'background_color': 'BackgroundColor'
     }
 
-    def __init__(self, width=None, height=None, horizontal_resolution=None, vertical_resolution=None, grayscale=None, rotate_angle=None, use_pdf=None, brightness=None, contrast=None, gamma=None, flip_mode=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, horizontal_resolution=None, vertical_resolution=None, grayscale=None, rotate_angle=None, use_pdf=None, brightness=None, contrast=None, gamma=None, flip_mode=None, background_color=None, **kwargs):  # noqa: E501
         """Initializes new instance of ImageConvertOptions"""  # noqa: E501
 
         self._width = None
@@ -86,6 +88,7 @@ class ImageConvertOptions(ConvertOptions):
         self._contrast = None
         self._gamma = None
         self._flip_mode = None
+        self._background_color = None
 
         if width is not None:
             self.width = width
@@ -109,6 +112,8 @@ class ImageConvertOptions(ConvertOptions):
             self.gamma = gamma
         if flip_mode is not None:
             self.flip_mode = flip_mode
+        if background_color is not None:
+            self.background_color = background_color
 
         base = super(ImageConvertOptions, self)
         base.__init__(**kwargs)
@@ -409,6 +414,30 @@ class ImageConvertOptions(ConvertOptions):
             self._flip_mode = flip_mode
         else:
             self._flip_mode = allowed_values[int(flip_mode) if six.PY3 else long(flip_mode)]
+    
+    @property
+    def background_color(self):
+        """
+        Gets the background_color.  # noqa: E501
+
+        Gets or sets a background color.  # noqa: E501
+
+        :return: The background_color.  # noqa: E501
+        :rtype: str
+        """
+        return self._background_color
+
+    @background_color.setter
+    def background_color(self, background_color):
+        """
+        Sets the background_color.
+
+        Gets or sets a background color.  # noqa: E501
+
+        :param background_color: The background_color.  # noqa: E501
+        :type: str
+        """
+        self._background_color = background_color
 
     def to_dict(self):
         """Returns the model properties as a dict"""
