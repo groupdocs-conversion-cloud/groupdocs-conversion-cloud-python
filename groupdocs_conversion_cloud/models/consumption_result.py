@@ -44,24 +44,29 @@ class ConsumptionResult(object):
     """
     swagger_types = {
         'credit': 'float',
-        'quantity': 'float'
+        'quantity': 'float',
+        'billed_api_calls': 'float'
     }
 
     attribute_map = {
         'credit': 'Credit',
-        'quantity': 'Quantity'
+        'quantity': 'Quantity',
+        'billed_api_calls': 'BilledApiCalls'
     }
 
-    def __init__(self, credit=None, quantity=None, **kwargs):  # noqa: E501
+    def __init__(self, credit=None, quantity=None, billed_api_calls=None, **kwargs):  # noqa: E501
         """Initializes new instance of ConsumptionResult"""  # noqa: E501
 
         self._credit = None
         self._quantity = None
+        self._billed_api_calls = None
 
         if credit is not None:
             self.credit = credit
         if quantity is not None:
             self.quantity = quantity
+        if billed_api_calls is not None:
+            self.billed_api_calls = billed_api_calls
     
     @property
     def credit(self):
@@ -114,6 +119,32 @@ class ConsumptionResult(object):
         if quantity is None:
             raise ValueError("Invalid value for `quantity`, must not be `None`")  # noqa: E501
         self._quantity = quantity
+    
+    @property
+    def billed_api_calls(self):
+        """
+        Gets the billed_api_calls.  # noqa: E501
+
+        Billed API calls number  # noqa: E501
+
+        :return: The billed_api_calls.  # noqa: E501
+        :rtype: float
+        """
+        return self._billed_api_calls
+
+    @billed_api_calls.setter
+    def billed_api_calls(self, billed_api_calls):
+        """
+        Sets the billed_api_calls.
+
+        Billed API calls number  # noqa: E501
+
+        :param billed_api_calls: The billed_api_calls.  # noqa: E501
+        :type: float
+        """
+        if billed_api_calls is None:
+            raise ValueError("Invalid value for `billed_api_calls`, must not be `None`")  # noqa: E501
+        self._billed_api_calls = billed_api_calls
 
     def to_dict(self):
         """Returns the model properties as a dict"""
