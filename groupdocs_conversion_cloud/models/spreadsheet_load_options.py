@@ -53,7 +53,7 @@ class SpreadsheetLoadOptions(LoadOptions):
         'convert_range': 'str',
         'skip_empty_rows_and_columns': 'bool',
         'password': 'str',
-        'hide_comments': 'bool'
+        'print_comments': 'str'
     }
 
     attribute_map = {
@@ -65,10 +65,10 @@ class SpreadsheetLoadOptions(LoadOptions):
         'convert_range': 'ConvertRange',
         'skip_empty_rows_and_columns': 'SkipEmptyRowsAndColumns',
         'password': 'Password',
-        'hide_comments': 'HideComments'
+        'print_comments': 'PrintComments'
     }
 
-    def __init__(self, default_font=None, font_substitutes=None, show_grid_lines=None, show_hidden_sheets=None, one_page_per_sheet=None, convert_range=None, skip_empty_rows_and_columns=None, password=None, hide_comments=None, **kwargs):  # noqa: E501
+    def __init__(self, default_font=None, font_substitutes=None, show_grid_lines=None, show_hidden_sheets=None, one_page_per_sheet=None, convert_range=None, skip_empty_rows_and_columns=None, password=None, print_comments=None, **kwargs):  # noqa: E501
         """Initializes new instance of SpreadsheetLoadOptions"""  # noqa: E501
 
         self._default_font = None
@@ -79,7 +79,7 @@ class SpreadsheetLoadOptions(LoadOptions):
         self._convert_range = None
         self._skip_empty_rows_and_columns = None
         self._password = None
-        self._hide_comments = None
+        self._print_comments = None
 
         if default_font is not None:
             self.default_font = default_font
@@ -97,8 +97,8 @@ class SpreadsheetLoadOptions(LoadOptions):
             self.skip_empty_rows_and_columns = skip_empty_rows_and_columns
         if password is not None:
             self.password = password
-        if hide_comments is not None:
-            self.hide_comments = hide_comments
+        if print_comments is not None:
+            self.print_comments = print_comments
 
         base = super(SpreadsheetLoadOptions, self)
         base.__init__(**kwargs)
@@ -307,30 +307,38 @@ class SpreadsheetLoadOptions(LoadOptions):
         self._password = password
     
     @property
-    def hide_comments(self):
+    def print_comments(self):
         """
-        Gets the hide_comments.  # noqa: E501
+        Gets the print_comments.  # noqa: E501
 
-        Hide comments  # noqa: E501
+        Represents the way comments are printed with the sheet. Default is PrintNoComments.  # noqa: E501
 
-        :return: The hide_comments.  # noqa: E501
-        :rtype: bool
+        :return: The print_comments.  # noqa: E501
+        :rtype: str
         """
-        return self._hide_comments
+        return self._print_comments
 
-    @hide_comments.setter
-    def hide_comments(self, hide_comments):
+    @print_comments.setter
+    def print_comments(self, print_comments):
         """
-        Sets the hide_comments.
+        Sets the print_comments.
 
-        Hide comments  # noqa: E501
+        Represents the way comments are printed with the sheet. Default is PrintNoComments.  # noqa: E501
 
-        :param hide_comments: The hide_comments.  # noqa: E501
-        :type: bool
+        :param print_comments: The print_comments.  # noqa: E501
+        :type: str
         """
-        if hide_comments is None:
-            raise ValueError("Invalid value for `hide_comments`, must not be `None`")  # noqa: E501
-        self._hide_comments = hide_comments
+        if print_comments is None:
+            raise ValueError("Invalid value for `print_comments`, must not be `None`")  # noqa: E501
+        allowed_values = ["PrintInPlace", "PrintNoComments", "PrintSheetEnd", "PrintWithThreadedComments"]  # noqa: E501
+        if not print_comments.isdigit():	
+            if print_comments not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `print_comments` ({0}), must be one of {1}"  # noqa: E501
+                    .format(print_comments, allowed_values))
+            self._print_comments = print_comments
+        else:
+            self._print_comments = allowed_values[int(print_comments) if six.PY3 else long(print_comments)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""
