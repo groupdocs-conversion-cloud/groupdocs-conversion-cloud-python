@@ -204,7 +204,7 @@ class PresentationLoadOptions(LoadOptions):
         """
         Gets the depth.  # noqa: E501
 
-        Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.Depth     Default: 1  # noqa: E501
+        Option to control how many levels in depth to perform conversion     Default: 1  # noqa: E501
 
         :return: The depth.  # noqa: E501
         :rtype: int
@@ -216,7 +216,7 @@ class PresentationLoadOptions(LoadOptions):
         """
         Sets the depth.
 
-        Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.Depth     Default: 1  # noqa: E501
+        Option to control how many levels in depth to perform conversion     Default: 1  # noqa: E501
 
         :param depth: The depth.  # noqa: E501
         :type: int
@@ -230,7 +230,7 @@ class PresentationLoadOptions(LoadOptions):
         """
         Gets the convert_owned.  # noqa: E501
 
-        Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwned     Default is false  # noqa: E501
+        Option to control whether the owned documents in the documents container must     be converted  # noqa: E501
 
         :return: The convert_owned.  # noqa: E501
         :rtype: bool
@@ -242,7 +242,7 @@ class PresentationLoadOptions(LoadOptions):
         """
         Sets the convert_owned.
 
-        Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwned     Default is false  # noqa: E501
+        Option to control whether the owned documents in the documents container must     be converted  # noqa: E501
 
         :param convert_owned: The convert_owned.  # noqa: E501
         :type: bool
@@ -256,7 +256,7 @@ class PresentationLoadOptions(LoadOptions):
         """
         Gets the convert_owner.  # noqa: E501
 
-        Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwner     Default is true  # noqa: E501
+        Option to control whether the documents container itself must be converted If     this property is true the documents container will be the first converted document     Default is true  # noqa: E501
 
         :return: The convert_owner.  # noqa: E501
         :rtype: bool
@@ -268,7 +268,7 @@ class PresentationLoadOptions(LoadOptions):
         """
         Sets the convert_owner.
 
-        Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwner     Default is true  # noqa: E501
+        Option to control whether the documents container itself must be converted If     this property is true the documents container will be the first converted document     Default is true  # noqa: E501
 
         :param convert_owner: The convert_owner.  # noqa: E501
         :type: bool
