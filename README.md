@@ -1,5 +1,6 @@
 # GroupDocs.Conversion Cloud Python SDK
-Python package for communicating with the GroupDocs.Conversion Cloud API
+
+This repository contains GroupDocs.Conversion Cloud SDK for Python source code. This SDK has been developed to help you get started with using our document conversion REST API, allowing to seamlessly convert your documents to any format you need. With this single API, you can convert back and forth between over 50 types of documents and images, including all Microsoft Office and OpenDocument file formats, PDF documents, HTML, CAD, raster images and many more.
 
 ## Requirements
 
@@ -18,7 +19,14 @@ Or clone repository and install it via [Setuptools](http://pypi.python.org/pypi/
 python setup.py install
 ```
 
-## Getting Started
+### Create an account
+Creating an account is very simple. Go to Dashboard to create a free account.
+We’re using Single Sign On across our websites, therefore, if you already have an account with our services, you can use it to also access the [Dashboard](https://dashboard.groupdocs.cloud).
+
+### Create an API client app
+Before you can make any requests to GroupDocs Cloud API you need to get a Client Id and a Client Secret. This will be used to invoke GroupDocs Cloud API. You can get it by creating a new [Application](https://dashboard.groupdocs.cloud/applications).
+
+## Convert document
 
 Please follow the [installation procedure](#installation) and then run following:
 
@@ -26,24 +34,54 @@ Please follow the [installation procedure](#installation) and then run following
 # Import module
 import groupdocs_conversion_cloud
 
-# Get your app_sid and app_key at https://dashboard.groupdocs.cloud (free registration is required).
-app_sid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-app_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+# Get your clientId and clientSecret at https://dashboard.groupdocs.cloud (free registration is required).
+client_id = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+client_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 # Create instance of the API
-api = groupdocs_conversion_cloud.InfoApi.from_keys(app_sid, app_key)
+apiInstance = groupdocs_conversion_cloud.ConvertApi.from_keys(client_id, client_secret)
 
-try:
-    # Retrieve supported conversion types
-    request = groupdocs_conversion_cloud.GetSupportedConversionTypesRequest()
-    response = api.get_supported_conversion_types(request)
+# Prepare request
+request = groupdocs_conversion_cloud.ConvertDocumentDirectRequest("pdf", "myFile.docx")
 
-    # Print out supported conversion types
-    print("Supported conversion types:")
-    for format in response:
-        print('{0} to [{1}]'.format(format.source_format, ', '.join(format.target_formats))) 
-except groupdocs_conversion_cloud.ApiException as e:
-    print("Exception when calling get_supported_conversion_types: {0}".format(e.message))
+# Convert
+result = apiInstance.convert_document_direct(request)
+
+print("Document converted: " + result)
+
+```
+
+## Convert document using cloud storage
+
+```python
+# Import module
+import groupdocs_conversion_cloud
+
+# Get your clientId and clientSecret at https://dashboard.groupdocs.cloud (free registration is required).
+client_id = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+client_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+# Create instances of the APIs
+fileApi = groupdocs_conversion_cloud.FileApi.from_keys(client_id, client_secret)
+convertApi = groupdocs_conversion_cloud.ConvertApi.from_keys(client_id, client_secret)
+
+# Upload file
+fileApi.upload_file(groupdocs_conversion_cloud.UploadFileRequest("myFile.docx", "myFile.docx"))
+
+# Prepare convert settings
+settings = groupdocs_conversion_cloud.ConvertSettings()
+settings.file_path = "myFile.docx"
+settings.format = "pdf"
+settings.output_path = "converted"
+
+# Convert
+result = convertApi.convert_document(groupdocs_conversion_cloud.ConvertDocumentRequest(settings))
+
+print("Document converted: " + result)
+
+# Download result
+response = fileApi.download_file(groupdocs_conversion_cloud.DownloadFileRequest("converted/myFile.pdf", None))
+
 ```
 
 ## Licensing
