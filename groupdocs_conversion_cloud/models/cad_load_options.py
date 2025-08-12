@@ -46,29 +46,34 @@ class CadLoadOptions(LoadOptions):
     """
     swagger_types = {
         'layout_names': 'list[str]',
-        'background_color': 'str',
-        'draw_type': 'str'
+        'draw_type': 'str',
+        'draw_color': 'str',
+        'background_color': 'str'
     }
 
     attribute_map = {
         'layout_names': 'LayoutNames',
-        'background_color': 'BackgroundColor',
-        'draw_type': 'DrawType'
+        'draw_type': 'DrawType',
+        'draw_color': 'DrawColor',
+        'background_color': 'BackgroundColor'
     }
 
-    def __init__(self, layout_names=None, background_color=None, draw_type=None, **kwargs):  # noqa: E501
+    def __init__(self, layout_names=None, draw_type=None, draw_color=None, background_color=None, **kwargs):  # noqa: E501
         """Initializes new instance of CadLoadOptions"""  # noqa: E501
 
         self._layout_names = None
-        self._background_color = None
         self._draw_type = None
+        self._draw_color = None
+        self._background_color = None
 
         if layout_names is not None:
             self.layout_names = layout_names
-        if background_color is not None:
-            self.background_color = background_color
         if draw_type is not None:
             self.draw_type = draw_type
+        if draw_color is not None:
+            self.draw_color = draw_color
+        if background_color is not None:
+            self.background_color = background_color
 
         base = super(CadLoadOptions, self)
         base.__init__(**kwargs)
@@ -101,35 +106,11 @@ class CadLoadOptions(LoadOptions):
         self._layout_names = layout_names
     
     @property
-    def background_color(self):
-        """
-        Gets the background_color.  # noqa: E501
-
-        Gets or sets a background color.  # noqa: E501
-
-        :return: The background_color.  # noqa: E501
-        :rtype: str
-        """
-        return self._background_color
-
-    @background_color.setter
-    def background_color(self, background_color):
-        """
-        Sets the background_color.
-
-        Gets or sets a background color.  # noqa: E501
-
-        :param background_color: The background_color.  # noqa: E501
-        :type: str
-        """
-        self._background_color = background_color
-    
-    @property
     def draw_type(self):
         """
         Gets the draw_type.  # noqa: E501
 
-        Gets or sets type of drawing.  # noqa: E501
+        A type of drawing.  # noqa: E501
 
         :return: The draw_type.  # noqa: E501
         :rtype: str
@@ -141,7 +122,7 @@ class CadLoadOptions(LoadOptions):
         """
         Sets the draw_type.
 
-        Gets or sets type of drawing.  # noqa: E501
+        A type of drawing.  # noqa: E501
 
         :param draw_type: The draw_type.  # noqa: E501
         :type: str
@@ -157,6 +138,54 @@ class CadLoadOptions(LoadOptions):
             self._draw_type = draw_type
         else:
             self._draw_type = allowed_values[int(draw_type) if six.PY3 else long(draw_type)]
+    
+    @property
+    def draw_color(self):
+        """
+        Gets the draw_color.  # noqa: E501
+
+        A foreground color.               # noqa: E501
+
+        :return: The draw_color.  # noqa: E501
+        :rtype: str
+        """
+        return self._draw_color
+
+    @draw_color.setter
+    def draw_color(self, draw_color):
+        """
+        Sets the draw_color.
+
+        A foreground color.               # noqa: E501
+
+        :param draw_color: The draw_color.  # noqa: E501
+        :type: str
+        """
+        self._draw_color = draw_color
+    
+    @property
+    def background_color(self):
+        """
+        Gets the background_color.  # noqa: E501
+
+        A background color.  # noqa: E501
+
+        :return: The background_color.  # noqa: E501
+        :rtype: str
+        """
+        return self._background_color
+
+    @background_color.setter
+    def background_color(self, background_color):
+        """
+        Sets the background_color.
+
+        A background color.  # noqa: E501
+
+        :param background_color: The background_color.  # noqa: E501
+        :type: str
+        """
+        self._background_color = background_color
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -45,60 +45,85 @@ class EmailLoadOptions(LoadOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'display_header': 'bool',
-        'display_from_email_address': 'bool',
-        'display_to_email_address': 'bool',
-        'display_cc_email_address': 'bool',
-        'display_bcc_email_address': 'bool',
-        'time_zone_offset': 'str',
-        'convert_attachments': 'bool',
+        'preserve_original_date': 'bool',
         'field_labels': 'list[FieldLabel]',
-        'preserve_original_date': 'bool'
+        'time_zone_offset': 'str',
+        'display_sent': 'bool',
+        'display_subject': 'bool',
+        'display_attachments': 'bool',
+        'display_email_addresses': 'bool',
+        'display_bcc_email_address': 'bool',
+        'display_cc_email_address': 'bool',
+        'display_to_email_address': 'bool',
+        'display_from_email_address': 'bool',
+        'display_header': 'bool',
+        'default_font': 'str',
+        'font_substitutes': 'dict(str, str)'
     }
 
     attribute_map = {
-        'display_header': 'DisplayHeader',
-        'display_from_email_address': 'DisplayFromEmailAddress',
-        'display_to_email_address': 'DisplayToEmailAddress',
-        'display_cc_email_address': 'DisplayCcEmailAddress',
-        'display_bcc_email_address': 'DisplayBccEmailAddress',
-        'time_zone_offset': 'TimeZoneOffset',
-        'convert_attachments': 'ConvertAttachments',
+        'preserve_original_date': 'PreserveOriginalDate',
         'field_labels': 'FieldLabels',
-        'preserve_original_date': 'PreserveOriginalDate'
+        'time_zone_offset': 'TimeZoneOffset',
+        'display_sent': 'DisplaySent',
+        'display_subject': 'DisplaySubject',
+        'display_attachments': 'DisplayAttachments',
+        'display_email_addresses': 'DisplayEmailAddresses',
+        'display_bcc_email_address': 'DisplayBccEmailAddress',
+        'display_cc_email_address': 'DisplayCcEmailAddress',
+        'display_to_email_address': 'DisplayToEmailAddress',
+        'display_from_email_address': 'DisplayFromEmailAddress',
+        'display_header': 'DisplayHeader',
+        'default_font': 'DefaultFont',
+        'font_substitutes': 'FontSubstitutes'
     }
 
-    def __init__(self, display_header=None, display_from_email_address=None, display_to_email_address=None, display_cc_email_address=None, display_bcc_email_address=None, time_zone_offset=None, convert_attachments=None, field_labels=None, preserve_original_date=None, **kwargs):  # noqa: E501
+    def __init__(self, preserve_original_date=None, field_labels=None, time_zone_offset=None, display_sent=None, display_subject=None, display_attachments=None, display_email_addresses=None, display_bcc_email_address=None, display_cc_email_address=None, display_to_email_address=None, display_from_email_address=None, display_header=None, default_font=None, font_substitutes=None, **kwargs):  # noqa: E501
         """Initializes new instance of EmailLoadOptions"""  # noqa: E501
 
-        self._display_header = None
-        self._display_from_email_address = None
-        self._display_to_email_address = None
-        self._display_cc_email_address = None
-        self._display_bcc_email_address = None
-        self._time_zone_offset = None
-        self._convert_attachments = None
-        self._field_labels = None
         self._preserve_original_date = None
+        self._field_labels = None
+        self._time_zone_offset = None
+        self._display_sent = None
+        self._display_subject = None
+        self._display_attachments = None
+        self._display_email_addresses = None
+        self._display_bcc_email_address = None
+        self._display_cc_email_address = None
+        self._display_to_email_address = None
+        self._display_from_email_address = None
+        self._display_header = None
+        self._default_font = None
+        self._font_substitutes = None
 
-        if display_header is not None:
-            self.display_header = display_header
-        if display_from_email_address is not None:
-            self.display_from_email_address = display_from_email_address
-        if display_to_email_address is not None:
-            self.display_to_email_address = display_to_email_address
-        if display_cc_email_address is not None:
-            self.display_cc_email_address = display_cc_email_address
-        if display_bcc_email_address is not None:
-            self.display_bcc_email_address = display_bcc_email_address
-        if time_zone_offset is not None:
-            self.time_zone_offset = time_zone_offset
-        if convert_attachments is not None:
-            self.convert_attachments = convert_attachments
-        if field_labels is not None:
-            self.field_labels = field_labels
         if preserve_original_date is not None:
             self.preserve_original_date = preserve_original_date
+        if field_labels is not None:
+            self.field_labels = field_labels
+        if time_zone_offset is not None:
+            self.time_zone_offset = time_zone_offset
+        if display_sent is not None:
+            self.display_sent = display_sent
+        if display_subject is not None:
+            self.display_subject = display_subject
+        if display_attachments is not None:
+            self.display_attachments = display_attachments
+        if display_email_addresses is not None:
+            self.display_email_addresses = display_email_addresses
+        if display_bcc_email_address is not None:
+            self.display_bcc_email_address = display_bcc_email_address
+        if display_cc_email_address is not None:
+            self.display_cc_email_address = display_cc_email_address
+        if display_to_email_address is not None:
+            self.display_to_email_address = display_to_email_address
+        if display_from_email_address is not None:
+            self.display_from_email_address = display_from_email_address
+        if display_header is not None:
+            self.display_header = display_header
+        if default_font is not None:
+            self.default_font = default_font
+        if font_substitutes is not None:
+            self.font_substitutes = font_substitutes
 
         base = super(EmailLoadOptions, self)
         base.__init__(**kwargs)
@@ -107,108 +132,180 @@ class EmailLoadOptions(LoadOptions):
         self.attribute_map.update(base.attribute_map)
     
     @property
-    def display_header(self):
+    def preserve_original_date(self):
         """
-        Gets the display_header.  # noqa: E501
+        Gets the preserve_original_date.  # noqa: E501
 
-        Option to display or hide the email header. Default: true  # noqa: E501
+        Defines whether need to keep original date header string in mail message when saving or not (Default value is true)  # noqa: E501
 
-        :return: The display_header.  # noqa: E501
+        :return: The preserve_original_date.  # noqa: E501
         :rtype: bool
         """
-        return self._display_header
+        return self._preserve_original_date
 
-    @display_header.setter
-    def display_header(self, display_header):
+    @preserve_original_date.setter
+    def preserve_original_date(self, preserve_original_date):
         """
-        Sets the display_header.
+        Sets the preserve_original_date.
 
-        Option to display or hide the email header. Default: true  # noqa: E501
+        Defines whether need to keep original date header string in mail message when saving or not (Default value is true)  # noqa: E501
 
-        :param display_header: The display_header.  # noqa: E501
+        :param preserve_original_date: The preserve_original_date.  # noqa: E501
         :type: bool
         """
-        if display_header is None:
-            raise ValueError("Invalid value for `display_header`, must not be `None`")  # noqa: E501
-        self._display_header = display_header
+        if preserve_original_date is None:
+            raise ValueError("Invalid value for `preserve_original_date`, must not be `None`")  # noqa: E501
+        self._preserve_original_date = preserve_original_date
     
     @property
-    def display_from_email_address(self):
+    def field_labels(self):
         """
-        Gets the display_from_email_address.  # noqa: E501
+        Gets the field_labels.  # noqa: E501
 
-        Option to display or hide \"from\" email address. Default: true  # noqa: E501
+        The mapping between email message field and field text representation  # noqa: E501
 
-        :return: The display_from_email_address.  # noqa: E501
-        :rtype: bool
+        :return: The field_labels.  # noqa: E501
+        :rtype: list[FieldLabel]
         """
-        return self._display_from_email_address
+        return self._field_labels
 
-    @display_from_email_address.setter
-    def display_from_email_address(self, display_from_email_address):
+    @field_labels.setter
+    def field_labels(self, field_labels):
         """
-        Sets the display_from_email_address.
+        Sets the field_labels.
 
-        Option to display or hide \"from\" email address. Default: true  # noqa: E501
+        The mapping between email message field and field text representation  # noqa: E501
 
-        :param display_from_email_address: The display_from_email_address.  # noqa: E501
-        :type: bool
+        :param field_labels: The field_labels.  # noqa: E501
+        :type: list[FieldLabel]
         """
-        if display_from_email_address is None:
-            raise ValueError("Invalid value for `display_from_email_address`, must not be `None`")  # noqa: E501
-        self._display_from_email_address = display_from_email_address
+        self._field_labels = field_labels
     
     @property
-    def display_to_email_address(self):
+    def time_zone_offset(self):
         """
-        Gets the display_to_email_address.  # noqa: E501
+        Gets the time_zone_offset.  # noqa: E501
 
-        Option to display or hide \"to\" email address. Default: true  # noqa: E501
+        Gets or sets the Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the localtime and UTC.  # noqa: E501
 
-        :return: The display_to_email_address.  # noqa: E501
-        :rtype: bool
+        :return: The time_zone_offset.  # noqa: E501
+        :rtype: str
         """
-        return self._display_to_email_address
+        return self._time_zone_offset
 
-    @display_to_email_address.setter
-    def display_to_email_address(self, display_to_email_address):
+    @time_zone_offset.setter
+    def time_zone_offset(self, time_zone_offset):
         """
-        Sets the display_to_email_address.
+        Sets the time_zone_offset.
 
-        Option to display or hide \"to\" email address. Default: true  # noqa: E501
+        Gets or sets the Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the localtime and UTC.  # noqa: E501
 
-        :param display_to_email_address: The display_to_email_address.  # noqa: E501
-        :type: bool
+        :param time_zone_offset: The time_zone_offset.  # noqa: E501
+        :type: str
         """
-        if display_to_email_address is None:
-            raise ValueError("Invalid value for `display_to_email_address`, must not be `None`")  # noqa: E501
-        self._display_to_email_address = display_to_email_address
+        self._time_zone_offset = time_zone_offset
     
     @property
-    def display_cc_email_address(self):
+    def display_sent(self):
         """
-        Gets the display_cc_email_address.  # noqa: E501
+        Gets the display_sent.  # noqa: E501
 
-        Option to display or hide \"Cc\" email address. Default: false  # noqa: E501
+        Option to display or hide sent date/time in the header. Default: true.  # noqa: E501
 
-        :return: The display_cc_email_address.  # noqa: E501
+        :return: The display_sent.  # noqa: E501
         :rtype: bool
         """
-        return self._display_cc_email_address
+        return self._display_sent
 
-    @display_cc_email_address.setter
-    def display_cc_email_address(self, display_cc_email_address):
+    @display_sent.setter
+    def display_sent(self, display_sent):
         """
-        Sets the display_cc_email_address.
+        Sets the display_sent.
 
-        Option to display or hide \"Cc\" email address. Default: false  # noqa: E501
+        Option to display or hide sent date/time in the header. Default: true.  # noqa: E501
 
-        :param display_cc_email_address: The display_cc_email_address.  # noqa: E501
+        :param display_sent: The display_sent.  # noqa: E501
         :type: bool
         """
-        if display_cc_email_address is None:
-            raise ValueError("Invalid value for `display_cc_email_address`, must not be `None`")  # noqa: E501
-        self._display_cc_email_address = display_cc_email_address
+        if display_sent is None:
+            raise ValueError("Invalid value for `display_sent`, must not be `None`")  # noqa: E501
+        self._display_sent = display_sent
+    
+    @property
+    def display_subject(self):
+        """
+        Gets the display_subject.  # noqa: E501
+
+        Option to display or hide subject in the header. Default: true.  # noqa: E501
+
+        :return: The display_subject.  # noqa: E501
+        :rtype: bool
+        """
+        return self._display_subject
+
+    @display_subject.setter
+    def display_subject(self, display_subject):
+        """
+        Sets the display_subject.
+
+        Option to display or hide subject in the header. Default: true.  # noqa: E501
+
+        :param display_subject: The display_subject.  # noqa: E501
+        :type: bool
+        """
+        if display_subject is None:
+            raise ValueError("Invalid value for `display_subject`, must not be `None`")  # noqa: E501
+        self._display_subject = display_subject
+    
+    @property
+    def display_attachments(self):
+        """
+        Gets the display_attachments.  # noqa: E501
+
+        Option to display or hide attachments in the header. Default: true.  # noqa: E501
+
+        :return: The display_attachments.  # noqa: E501
+        :rtype: bool
+        """
+        return self._display_attachments
+
+    @display_attachments.setter
+    def display_attachments(self, display_attachments):
+        """
+        Sets the display_attachments.
+
+        Option to display or hide attachments in the header. Default: true.  # noqa: E501
+
+        :param display_attachments: The display_attachments.  # noqa: E501
+        :type: bool
+        """
+        if display_attachments is None:
+            raise ValueError("Invalid value for `display_attachments`, must not be `None`")  # noqa: E501
+        self._display_attachments = display_attachments
+    
+    @property
+    def display_email_addresses(self):
+        """
+        Gets the display_email_addresses.  # noqa: E501
+
+
+        :return: The display_email_addresses.  # noqa: E501
+        :rtype: bool
+        """
+        return self._display_email_addresses
+
+    @display_email_addresses.setter
+    def display_email_addresses(self, display_email_addresses):
+        """
+        Sets the display_email_addresses.
+
+
+        :param display_email_addresses: The display_email_addresses.  # noqa: E501
+        :type: bool
+        """
+        if display_email_addresses is None:
+            raise ValueError("Invalid value for `display_email_addresses`, must not be `None`")  # noqa: E501
+        self._display_email_addresses = display_email_addresses
     
     @property
     def display_bcc_email_address(self):
@@ -237,104 +334,156 @@ class EmailLoadOptions(LoadOptions):
         self._display_bcc_email_address = display_bcc_email_address
     
     @property
-    def time_zone_offset(self):
+    def display_cc_email_address(self):
         """
-        Gets the time_zone_offset.  # noqa: E501
+        Gets the display_cc_email_address.  # noqa: E501
 
-        Gets or sets the Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the localtime and UTC.  # noqa: E501
+        Option to display or hide \"Cc\" email address. Default: false  # noqa: E501
 
-        :return: The time_zone_offset.  # noqa: E501
+        :return: The display_cc_email_address.  # noqa: E501
+        :rtype: bool
+        """
+        return self._display_cc_email_address
+
+    @display_cc_email_address.setter
+    def display_cc_email_address(self, display_cc_email_address):
+        """
+        Sets the display_cc_email_address.
+
+        Option to display or hide \"Cc\" email address. Default: false  # noqa: E501
+
+        :param display_cc_email_address: The display_cc_email_address.  # noqa: E501
+        :type: bool
+        """
+        if display_cc_email_address is None:
+            raise ValueError("Invalid value for `display_cc_email_address`, must not be `None`")  # noqa: E501
+        self._display_cc_email_address = display_cc_email_address
+    
+    @property
+    def display_to_email_address(self):
+        """
+        Gets the display_to_email_address.  # noqa: E501
+
+        Option to display or hide \"to\" email address. Default: true  # noqa: E501
+
+        :return: The display_to_email_address.  # noqa: E501
+        :rtype: bool
+        """
+        return self._display_to_email_address
+
+    @display_to_email_address.setter
+    def display_to_email_address(self, display_to_email_address):
+        """
+        Sets the display_to_email_address.
+
+        Option to display or hide \"to\" email address. Default: true  # noqa: E501
+
+        :param display_to_email_address: The display_to_email_address.  # noqa: E501
+        :type: bool
+        """
+        if display_to_email_address is None:
+            raise ValueError("Invalid value for `display_to_email_address`, must not be `None`")  # noqa: E501
+        self._display_to_email_address = display_to_email_address
+    
+    @property
+    def display_from_email_address(self):
+        """
+        Gets the display_from_email_address.  # noqa: E501
+
+        Option to display or hide \"from\" email address. Default: true  # noqa: E501
+
+        :return: The display_from_email_address.  # noqa: E501
+        :rtype: bool
+        """
+        return self._display_from_email_address
+
+    @display_from_email_address.setter
+    def display_from_email_address(self, display_from_email_address):
+        """
+        Sets the display_from_email_address.
+
+        Option to display or hide \"from\" email address. Default: true  # noqa: E501
+
+        :param display_from_email_address: The display_from_email_address.  # noqa: E501
+        :type: bool
+        """
+        if display_from_email_address is None:
+            raise ValueError("Invalid value for `display_from_email_address`, must not be `None`")  # noqa: E501
+        self._display_from_email_address = display_from_email_address
+    
+    @property
+    def display_header(self):
+        """
+        Gets the display_header.  # noqa: E501
+
+        Option to display or hide the email header. Default: true  # noqa: E501
+
+        :return: The display_header.  # noqa: E501
+        :rtype: bool
+        """
+        return self._display_header
+
+    @display_header.setter
+    def display_header(self, display_header):
+        """
+        Sets the display_header.
+
+        Option to display or hide the email header. Default: true  # noqa: E501
+
+        :param display_header: The display_header.  # noqa: E501
+        :type: bool
+        """
+        if display_header is None:
+            raise ValueError("Invalid value for `display_header`, must not be `None`")  # noqa: E501
+        self._display_header = display_header
+    
+    @property
+    def default_font(self):
+        """
+        Gets the default_font.  # noqa: E501
+
+        Default font for Email document. The following font will be used if a font is missing.  # noqa: E501
+
+        :return: The default_font.  # noqa: E501
         :rtype: str
         """
-        return self._time_zone_offset
+        return self._default_font
 
-    @time_zone_offset.setter
-    def time_zone_offset(self, time_zone_offset):
+    @default_font.setter
+    def default_font(self, default_font):
         """
-        Sets the time_zone_offset.
+        Sets the default_font.
 
-        Gets or sets the Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the localtime and UTC.  # noqa: E501
+        Default font for Email document. The following font will be used if a font is missing.  # noqa: E501
 
-        :param time_zone_offset: The time_zone_offset.  # noqa: E501
+        :param default_font: The default_font.  # noqa: E501
         :type: str
         """
-        self._time_zone_offset = time_zone_offset
+        self._default_font = default_font
     
     @property
-    def convert_attachments(self):
+    def font_substitutes(self):
         """
-        Gets the convert_attachments.  # noqa: E501
+        Gets the font_substitutes.  # noqa: E501
 
-        Option to convert attachments in source email or not. Default: false.  # noqa: E501
+        List of font substitutes.  # noqa: E501
 
-        :return: The convert_attachments.  # noqa: E501
-        :rtype: bool
+        :return: The font_substitutes.  # noqa: E501
+        :rtype: dict(str, str)
         """
-        return self._convert_attachments
+        return self._font_substitutes
 
-    @convert_attachments.setter
-    def convert_attachments(self, convert_attachments):
+    @font_substitutes.setter
+    def font_substitutes(self, font_substitutes):
         """
-        Sets the convert_attachments.
+        Sets the font_substitutes.
 
-        Option to convert attachments in source email or not. Default: false.  # noqa: E501
+        List of font substitutes.  # noqa: E501
 
-        :param convert_attachments: The convert_attachments.  # noqa: E501
-        :type: bool
+        :param font_substitutes: The font_substitutes.  # noqa: E501
+        :type: dict(str, str)
         """
-        if convert_attachments is None:
-            raise ValueError("Invalid value for `convert_attachments`, must not be `None`")  # noqa: E501
-        self._convert_attachments = convert_attachments
-    
-    @property
-    def field_labels(self):
-        """
-        Gets the field_labels.  # noqa: E501
-
-        The mapping between email message field and field text representation  # noqa: E501
-
-        :return: The field_labels.  # noqa: E501
-        :rtype: list[FieldLabel]
-        """
-        return self._field_labels
-
-    @field_labels.setter
-    def field_labels(self, field_labels):
-        """
-        Sets the field_labels.
-
-        The mapping between email message field and field text representation  # noqa: E501
-
-        :param field_labels: The field_labels.  # noqa: E501
-        :type: list[FieldLabel]
-        """
-        self._field_labels = field_labels
-    
-    @property
-    def preserve_original_date(self):
-        """
-        Gets the preserve_original_date.  # noqa: E501
-
-        Defines whether need to keep original date header string in mail message when saving or not (Default value is true)  # noqa: E501
-
-        :return: The preserve_original_date.  # noqa: E501
-        :rtype: bool
-        """
-        return self._preserve_original_date
-
-    @preserve_original_date.setter
-    def preserve_original_date(self, preserve_original_date):
-        """
-        Sets the preserve_original_date.
-
-        Defines whether need to keep original date header string in mail message when saving or not (Default value is true)  # noqa: E501
-
-        :param preserve_original_date: The preserve_original_date.  # noqa: E501
-        :type: bool
-        """
-        if preserve_original_date is None:
-            raise ValueError("Invalid value for `preserve_original_date`, must not be `None`")  # noqa: E501
-        self._preserve_original_date = preserve_original_date
+        self._font_substitutes = font_substitutes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

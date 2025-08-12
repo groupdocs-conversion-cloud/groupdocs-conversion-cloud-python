@@ -46,34 +46,59 @@ class WebLoadOptions(LoadOptions):
     """
     swagger_types = {
         'page_numbering': 'bool',
+        'base_path': 'str',
         'encoding': 'str',
+        'skip_external_resources': 'bool',
         'use_pdf': 'bool',
-        'rendering_mode': 'str'
+        'rendering_mode': 'str',
+        'zoom': 'int',
+        'page_layout': 'str',
+        'custom_css_style': 'str'
     }
 
     attribute_map = {
         'page_numbering': 'PageNumbering',
+        'base_path': 'BasePath',
         'encoding': 'Encoding',
+        'skip_external_resources': 'SkipExternalResources',
         'use_pdf': 'UsePdf',
-        'rendering_mode': 'RenderingMode'
+        'rendering_mode': 'RenderingMode',
+        'zoom': 'Zoom',
+        'page_layout': 'PageLayout',
+        'custom_css_style': 'CustomCssStyle'
     }
 
-    def __init__(self, page_numbering=None, encoding=None, use_pdf=None, rendering_mode=None, **kwargs):  # noqa: E501
+    def __init__(self, page_numbering=None, base_path=None, encoding=None, skip_external_resources=None, use_pdf=None, rendering_mode=None, zoom=None, page_layout=None, custom_css_style=None, **kwargs):  # noqa: E501
         """Initializes new instance of WebLoadOptions"""  # noqa: E501
 
         self._page_numbering = None
+        self._base_path = None
         self._encoding = None
+        self._skip_external_resources = None
         self._use_pdf = None
         self._rendering_mode = None
+        self._zoom = None
+        self._page_layout = None
+        self._custom_css_style = None
 
         if page_numbering is not None:
             self.page_numbering = page_numbering
+        if base_path is not None:
+            self.base_path = base_path
         if encoding is not None:
             self.encoding = encoding
+        if skip_external_resources is not None:
+            self.skip_external_resources = skip_external_resources
         if use_pdf is not None:
             self.use_pdf = use_pdf
         if rendering_mode is not None:
             self.rendering_mode = rendering_mode
+        if zoom is not None:
+            self.zoom = zoom
+        if page_layout is not None:
+            self.page_layout = page_layout
+        if custom_css_style is not None:
+            self.custom_css_style = custom_css_style
 
         base = super(WebLoadOptions, self)
         base.__init__(**kwargs)
@@ -108,6 +133,30 @@ class WebLoadOptions(LoadOptions):
         self._page_numbering = page_numbering
     
     @property
+    def base_path(self):
+        """
+        Gets the base_path.  # noqa: E501
+
+        The base path/url for the html  # noqa: E501
+
+        :return: The base_path.  # noqa: E501
+        :rtype: str
+        """
+        return self._base_path
+
+    @base_path.setter
+    def base_path(self, base_path):
+        """
+        Sets the base_path.
+
+        The base path/url for the html  # noqa: E501
+
+        :param base_path: The base_path.  # noqa: E501
+        :type: str
+        """
+        self._base_path = base_path
+    
+    @property
     def encoding(self):
         """
         Gets the encoding.  # noqa: E501
@@ -130,6 +179,32 @@ class WebLoadOptions(LoadOptions):
         :type: str
         """
         self._encoding = encoding
+    
+    @property
+    def skip_external_resources(self):
+        """
+        Gets the skip_external_resources.  # noqa: E501
+
+        If true all external resource will not be loading  # noqa: E501
+
+        :return: The skip_external_resources.  # noqa: E501
+        :rtype: bool
+        """
+        return self._skip_external_resources
+
+    @skip_external_resources.setter
+    def skip_external_resources(self, skip_external_resources):
+        """
+        Sets the skip_external_resources.
+
+        If true all external resource will not be loading  # noqa: E501
+
+        :param skip_external_resources: The skip_external_resources.  # noqa: E501
+        :type: bool
+        """
+        if skip_external_resources is None:
+            raise ValueError("Invalid value for `skip_external_resources`, must not be `None`")  # noqa: E501
+        self._skip_external_resources = skip_external_resources
     
     @property
     def use_pdf(self):
@@ -190,6 +265,86 @@ class WebLoadOptions(LoadOptions):
             self._rendering_mode = rendering_mode
         else:
             self._rendering_mode = allowed_values[int(rendering_mode) if six.PY3 else long(rendering_mode)]
+    
+    @property
+    def zoom(self):
+        """
+        Gets the zoom.  # noqa: E501
+
+
+        :return: The zoom.  # noqa: E501
+        :rtype: int
+        """
+        return self._zoom
+
+    @zoom.setter
+    def zoom(self, zoom):
+        """
+        Sets the zoom.
+
+
+        :param zoom: The zoom.  # noqa: E501
+        :type: int
+        """
+        if zoom is None:
+            raise ValueError("Invalid value for `zoom`, must not be `None`")  # noqa: E501
+        self._zoom = zoom
+    
+    @property
+    def page_layout(self):
+        """
+        Gets the page_layout.  # noqa: E501
+
+        Specifies the page layout options when loading web documents  # noqa: E501
+
+        :return: The page_layout.  # noqa: E501
+        :rtype: str
+        """
+        return self._page_layout
+
+    @page_layout.setter
+    def page_layout(self, page_layout):
+        """
+        Sets the page_layout.
+
+        Specifies the page layout options when loading web documents  # noqa: E501
+
+        :param page_layout: The page_layout.  # noqa: E501
+        :type: str
+        """
+        if page_layout is None:
+            raise ValueError("Invalid value for `page_layout`, must not be `None`")  # noqa: E501
+        allowed_values = ["None", "ScaleToPageWidth", "ScaleToPageHeight"]  # noqa: E501
+        if not page_layout.isdigit():	
+            if page_layout not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `page_layout` ({0}), must be one of {1}"  # noqa: E501
+                    .format(page_layout, allowed_values))
+            self._page_layout = page_layout
+        else:
+            self._page_layout = allowed_values[int(page_layout) if six.PY3 else long(page_layout)]
+    
+    @property
+    def custom_css_style(self):
+        """
+        Gets the custom_css_style.  # noqa: E501
+
+
+        :return: The custom_css_style.  # noqa: E501
+        :rtype: str
+        """
+        return self._custom_css_style
+
+    @custom_css_style.setter
+    def custom_css_style(self, custom_css_style):
+        """
+        Sets the custom_css_style.
+
+
+        :param custom_css_style: The custom_css_style.  # noqa: E501
+        :type: str
+        """
+        self._custom_css_style = custom_css_style
 
     def to_dict(self):
         """Returns the model properties as a dict"""
