@@ -87,7 +87,7 @@ class TestConvertApi(TestContext):
         local_file_path = self.get_test_file_path(test_file)
         format = "pdf"
 
-        load_options = DocxLoadOptions()
+        load_options = WordProcessingLoadOptions()
         load_options.format = "docx"
         load_options.password = test_file.password
         
